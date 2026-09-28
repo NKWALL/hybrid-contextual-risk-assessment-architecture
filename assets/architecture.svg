@@ -1,0 +1,144 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2300 790" width="2300" height="790" font-family="Microsoft JhengHei, PingFang TC, Noto Sans TC, Heiti TC, sans-serif">
+  <defs>
+    <marker id="ap" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#7B5EA7"/>
+    </marker>
+    <marker id="ab" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#4A7FB5"/>
+    </marker>
+    <marker id="ao" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#E8963C"/>
+    </marker>
+  </defs>
+
+  <rect width="2300" height="790" fill="#FFFFFF"/>
+
+  <!-- ========== 上帶：資料層（知識庫＋判斷紀錄） ========== -->
+  <rect x="110" y="30" width="2160" height="136" rx="10" fill="#D3E2F6" stroke="#4A7FB5" stroke-width="2" stroke-dasharray="9 6"/>
+  <text x="1190" y="64" text-anchor="middle" font-size="29" font-weight="bold" fill="#16325C">資料層</text>
+  <text x="1190" y="104" text-anchor="middle" font-size="22" fill="#16325C"><tspan font-weight="bold">知識庫（本機 MySQL ／ 部署 Appwrite）</tspan>　門檻・權重・衰退參數　｜　行為規則 4 條　｜　情境規則 16 條　｜　特徵 24 項　｜　介入模板 13 筆　｜　禁詞 32 筆</text>
+  <text x="1190" y="142" text-anchor="middle" font-size="22" fill="#16325C"><tspan font-weight="bold">對話與判斷紀錄（Appwrite）</tspan>　對話訊息・滾動摘要・關係指標　｜　風險狀態歷程　｜　兩路與最終增量　｜　自評信心與判斷理由　｜　觸發的規則與情境　｜　綜合分數三成分　｜　命中禁詞與分類結果</text>
+
+  <g stroke="#4A7FB5" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#ab)" fill="none">
+    <path d="M194,166 L194,198"/><path d="M432,166 L432,198"/><path d="M670,166 L670,198"/>
+    <path d="M908,166 L908,198"/><path d="M1146,166 L1146,198"/><path d="M1622,166 L1622,198"/>
+    <path d="M1860,166 L1860,198"/><path d="M2098,166 L2098,198"/>
+  </g>
+  <text x="452" y="192" text-anchor="start" font-size="19" fill="#4A7FB5">讀回對話與先前狀態</text>
+
+  <path d="M2182,324 L2230,324 L2230,172" stroke="#4A7FB5" stroke-width="2.5" stroke-dasharray="6 5" fill="none" marker-end="url(#ab)"/>
+  <text y="200" text-anchor="middle" font-size="19" fill="#4A7FB5"><tspan x="2266" dy="0">判</tspan><tspan x="2266" dy="22">斷</tspan><tspan x="2266" dy="22">後</tspan><tspan x="2266" dy="22">以</tspan><tspan x="2266" dy="22">背</tspan><tspan x="2266" dy="22">景</tspan><tspan x="2266" dy="22">任</tspan><tspan x="2266" dy="22">務</tspan><tspan x="2266" dy="22">寫</tspan><tspan x="2266" dy="22">入</tspan></text>
+
+  <!-- ========== 進入 ========== -->
+  <text x="56" y="296" text-anchor="middle" font-size="25" fill="#16325C">一則訊息</text>
+  <path d="M14,324 L102,324" stroke="#7B5EA7" stroke-width="3" fill="none" marker-end="url(#ap)"/>
+
+  <!-- ========== 中帶：主線 ========== -->
+  <g font-size="25" fill="#16325C">
+    <rect x="110" y="204" width="168" height="240" rx="10" fill="#DCD5EE" stroke="#7B5EA7" stroke-width="2.5"/>
+    <text x="194" y="256" text-anchor="middle" font-size="30" font-weight="bold">Step 0</text>
+    <text x="194" y="296" text-anchor="middle" font-size="27" font-weight="bold">訊號層</text>
+    <text x="194" y="346" text-anchor="middle">禁詞比對</text>
+    <text x="194" y="384" text-anchor="middle">內容分類器</text>
+    <text x="194" y="422" text-anchor="middle" fill="#7B5EA7">只標記不攔截</text>
+
+    <rect x="348" y="204" width="168" height="240" rx="10" fill="#DCD5EE" stroke="#7B5EA7" stroke-width="2.5"/>
+    <text x="432" y="256" text-anchor="middle" font-size="30" font-weight="bold">Step 1</text>
+    <text x="432" y="296" text-anchor="middle" font-size="27" font-weight="bold">脈絡組建</text>
+    <text x="432" y="346" text-anchor="middle">對話歷史</text>
+    <text x="432" y="384" text-anchor="middle">L1 摘要</text>
+    <text x="432" y="422" text-anchor="middle">L2 關係指標</text>
+
+    <rect x="586" y="204" width="168" height="112" rx="10" fill="#DCD5EE" stroke="#7B5EA7" stroke-width="2.5"/>
+    <text x="670" y="246" text-anchor="middle" font-size="26" font-weight="bold">Step 2 規則</text>
+    <text x="670" y="282" text-anchor="middle" font-size="24">頻率・未回覆</text>
+    <text x="670" y="308" text-anchor="middle" font-size="24">發言失衡</text>
+
+    <rect x="586" y="332" width="168" height="112" rx="10" fill="#DCD5EE" stroke="#7B5EA7" stroke-width="2.5"/>
+    <text x="670" y="374" text-anchor="middle" font-size="26" font-weight="bold">Step 3 語意</text>
+    <text x="670" y="410" text-anchor="middle" font-size="24">五維度評分</text>
+    <text x="670" y="436" text-anchor="middle" font-size="24">＋自評信心</text>
+
+    <rect x="824" y="204" width="168" height="240" rx="10" fill="#DCD5EE" stroke="#7B5EA7" stroke-width="2.5"/>
+    <text x="908" y="256" text-anchor="middle" font-size="30" font-weight="bold">Step 4</text>
+    <text x="908" y="296" text-anchor="middle" font-size="27" font-weight="bold">融合層</text>
+    <text x="908" y="350" text-anchor="middle">α×規則</text>
+    <text x="908" y="388" text-anchor="middle">＋ β×語意</text>
+    <text x="908" y="426" text-anchor="middle" fill="#7B5EA7">β 上限 0.60</text>
+
+    <rect x="1062" y="204" width="168" height="240" rx="10" fill="#DCD5EE" stroke="#7B5EA7" stroke-width="2.5"/>
+    <text x="1146" y="256" text-anchor="middle" font-size="30" font-weight="bold">Step 5</text>
+    <text x="1146" y="296" text-anchor="middle" font-size="27" font-weight="bold">情境風險層</text>
+    <text x="1146" y="346" text-anchor="middle">16 條規則</text>
+    <text x="1146" y="384" text-anchor="middle">深夜・熟識度</text>
+    <text x="1146" y="422" text-anchor="middle">認識多久</text>
+
+    <rect x="1300" y="204" width="168" height="240" rx="10" fill="#DCD5EE" stroke="#7B5EA7" stroke-width="2.5"/>
+    <text x="1384" y="256" text-anchor="middle" font-size="30" font-weight="bold">Step 6</text>
+    <text x="1384" y="296" text-anchor="middle" font-size="27" font-weight="bold">本則增量</text>
+    <text x="1384" y="350" text-anchor="middle">融合結果</text>
+    <text x="1384" y="388" text-anchor="middle">＋情境加成</text>
+    <text x="1384" y="426" text-anchor="middle" fill="#7B5EA7">夾在 0 至 1</text>
+
+    <rect x="1538" y="204" width="168" height="240" rx="10" fill="#DCD5EE" stroke="#7B5EA7" stroke-width="2.5"/>
+    <text x="1622" y="256" text-anchor="middle" font-size="30" font-weight="bold">Step 7</text>
+    <text x="1622" y="296" text-anchor="middle" font-size="27" font-weight="bold">狀態計算</text>
+    <text x="1622" y="350" text-anchor="middle">累積×衰退</text>
+    <text x="1622" y="388" text-anchor="middle">＋本則增量</text>
+    <text x="1622" y="426" text-anchor="middle" fill="#7B5EA7">跨訊息累積</text>
+
+    <rect x="1776" y="204" width="168" height="240" rx="10" fill="#DCD5EE" stroke="#7B5EA7" stroke-width="2.5"/>
+    <text x="1860" y="256" text-anchor="middle" font-size="30" font-weight="bold">Step 8</text>
+    <text x="1860" y="296" text-anchor="middle" font-size="27" font-weight="bold">等級決策</text>
+    <text x="1860" y="350" text-anchor="middle">綜合三個訊號</text>
+    <text x="1860" y="388" text-anchor="middle" font-size="19">0.60・0.30・0.10</text>
+    <text x="1860" y="426" text-anchor="middle" fill="#7B5EA7">對應五等級</text>
+
+    <rect x="2014" y="204" width="168" height="112" rx="10" fill="#DCD5EE" stroke="#7B5EA7" stroke-width="2.5"/>
+    <text x="2098" y="246" text-anchor="middle" font-size="24" font-weight="bold">Step 9 寄件方</text>
+    <text x="2098" y="282" text-anchor="middle" font-size="24">反思提醒</text>
+    <text x="2098" y="308" text-anchor="middle" font-size="24">限制發言</text>
+
+    <rect x="2014" y="332" width="168" height="112" rx="10" fill="#DCD5EE" stroke="#7B5EA7" stroke-width="2.5"/>
+    <text x="2098" y="374" text-anchor="middle" font-size="24" font-weight="bold">Step 9 收件方</text>
+    <text x="2098" y="410" text-anchor="middle" font-size="24">保護卡片</text>
+    <text x="2098" y="436" text-anchor="middle" font-size="24">行動選項</text>
+  </g>
+
+  <g stroke="#7B5EA7" stroke-width="3" fill="none" marker-end="url(#ap)">
+    <path d="M278,324 L342,324"/>
+    <path d="M516,324 L551,324 L551,260 L580,260"/>
+    <path d="M516,324 L551,324 L551,388 L580,388"/>
+    <path d="M754,260 L789,260 L789,324 L818,324"/>
+    <path d="M992,324 L1056,324"/>
+    <path d="M1230,324 L1294,324"/>
+    <path d="M1468,324 L1532,324"/>
+    <path d="M1706,324 L1770,324"/>
+    <path d="M1944,324 L1979,324 L1979,260 L2008,260"/>
+    <path d="M1944,324 L1979,324 L1979,388 L2008,388"/>
+  </g>
+  <path d="M754,388 L789,388 L789,324" stroke="#7B5EA7" stroke-width="3" fill="none"/>
+
+  <!-- ========== 下帶：非同步與回饋 ========== -->
+  <text x="230" y="500" font-size="26" font-weight="bold" fill="#E8963C">非同步支線與回饋回流　不阻塞主線判斷</text>
+  <rect x="110" y="516" width="2072" height="215" rx="10" fill="#FEF6EE" stroke="#E8963C" stroke-width="2" stroke-dasharray="9 6"/>
+
+  <rect x="348" y="588" width="620" height="110" rx="10" fill="#FCE1C4" stroke="#E8963C" stroke-width="2.5" stroke-dasharray="9 6"/>
+  <text x="658" y="632" text-anchor="middle" font-size="28" font-weight="bold" fill="#16325C">Step 0.5　背景脈絡判斷</text>
+  <text x="658" y="671" text-anchor="middle" font-size="24" fill="#16325C">小型模型對整段對話給第二意見</text>
+
+  <rect x="1150" y="588" width="340" height="110" rx="10" fill="#FCE1C4" stroke="#E8963C" stroke-width="2.5"/>
+  <text x="1320" y="632" text-anchor="middle" font-size="28" font-weight="bold" fill="#16325C">回饋聚合</text>
+  <text x="1320" y="671" text-anchor="middle" font-size="23" fill="#16325C">一次疑慮示警／兩次正常信任</text>
+
+  <g stroke="#E8963C" stroke-width="3" fill="none" marker-end="url(#ao)">
+    <path d="M194,444 L194,643 L342,643"/>
+    <path d="M968,643 L1144,643"/>
+    <path d="M2098,444 L2098,643 L1496,643"/>
+    <path d="M1320,588 L1320,550 L1622,550 L1622,452"/>
+  </g>
+
+  <text x="274" y="625" text-anchor="middle" font-size="22" fill="#E8963C">旗標訊號</text>
+  <text x="1471" y="578" text-anchor="middle" font-size="21" fill="#E8963C">影響下一則的衰退與增量</text>
+  <text x="1800" y="625" text-anchor="middle" font-size="22" fill="#E8963C">收件方回饋</text>
+</svg>

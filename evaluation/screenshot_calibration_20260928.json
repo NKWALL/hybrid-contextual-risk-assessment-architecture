@@ -1,0 +1,167 @@
+{
+  "fixture_id": "screenshot_calibration_20260928",
+  "建立日期": "2026-09-28",
+  "用途": "校準一段能依序觸發 observation / warning / restricted / blocked 四個等級的對話，供報告第八節的實機截圖使用。本檔為依規則推算的設計，尚未實測，執行後須依實際落點修正。",
+  "對應設定": {
+    "config_id": "threshold_v2_rule_heavy",
+    "說明": "risk_fusion.py:19 與 risk_state.py:36 皆指定此 config_id。kb_configs 內另有 threshold_v1 也是 enabled=1，但程式不會載它。",
+    "thresholds": {
+      "B_OBSERVATION": 0.10,
+      "B_WARNING": 0.20,
+      "B_RESTRICTED": 0.45,
+      "B_BLOCKED": 0.65,
+      "SINGLE_DIM_OVERRIDE": 0.85
+    },
+    "decision_logic": {
+      "W_MAX": 0.6,
+      "W_SPREAD": 0.3,
+      "W_TREND": 0.1,
+      "NOISE_FLOOR": 0.10,
+      "SPREAD_MODE": "effdim",
+      "DECREASE_DAMPING": 0.03
+    },
+    "decay_factor": 0.7,
+    "context_window_size": 5
+  },
+
+  "執行限制": {
+    "時段": "當地時間 06:00 至 23:59。scenario_risk_layer.py:74 的 is_midnight 定義為 0 <= hour <= 5，深夜會額外觸發情境規則 1、2、10（加分 +0.3 至 +0.4），前段會衝過頭而拍不到 observation 與 warning。",
+    "conversation_id": "必須是全新、資料庫裡不存在的 id，例如 calib_20260928_01。沿用舊 id 會帶入既有的累積風險狀態。",
+    "唯讀": "本次為校準，不得修改任何程式、設定或知識庫資料。腳本請放 /tmp，跑完刪除。",
+    "不得調整內容": "若實際落點與 expected_level 不符，照實回報，不要改訊息去湊結果。"
+  },
+
+  "endpoint": {
+    "detect": "http://localhost:8001/api/v1/risk/detect",
+    "method": "POST",
+    "payload_schema": {
+      "conversation_id": "string",
+      "sender_id": "string",
+      "receiver_id": "string",
+      "current_message": "string"
+    },
+    "python": "/home/sunny/桌面/Graduate_Project/Server/venv/bin/python"
+  },
+
+  "participants": {
+    "A": { "user_id": "userA", "角色": "施壓方，逐步升溫" },
+    "B": { "user_id": "userB", "角色": "接收方，第三段起完全不回" }
+  },
+
+  "messages": [
+    {
+      "seq": 1, "phase": "第零段 安全基線", "sender": "A",
+      "delay_before_sec": 0,
+      "text": "你好～看你資料寫也喜歡爬山，最近有去哪嗎",
+      "expected_level": "safe"
+    },
+    {
+      "seq": 2, "phase": "第零段 安全基線", "sender": "B",
+      "delay_before_sec": 12,
+      "text": "有啊，上個月去了小百岳，那天天氣超好",
+      "expected_level": "safe"
+    },
+    {
+      "seq": 3, "phase": "第零段 安全基線", "sender": "A",
+      "delay_before_sec": 12,
+      "text": "不錯耶，我一直想去但都找不到伴",
+      "expected_level": "safe"
+    },
+    {
+      "seq": 4, "phase": "第零段 安全基線", "sender": "B",
+      "delay_before_sec": 12,
+      "text": "可以找社團啊，滿多人揪的",
+      "expected_level": "safe"
+    },
+
+    {
+      "seq": 5, "phase": "第一段 觀察", "sender": "A",
+      "delay_before_sec": 12,
+      "text": "其實我覺得跟你聊天很不一樣，才講沒幾句就覺得你懂我，我們是不是特別有緣",
+      "expected_level": "observation",
+      "設計依據": "情境規則 12 abnormal_acceleration_grooming（familiarity_max 0.50、intimacy_min 0.6、progression_rate）。新對話熟悉度低，A 快速拉高親密語氣即命中，加 manipulation +0.4、sexual_boundary +0.2。"
+    },
+    {
+      "seq": 6, "phase": "第一段 觀察", "sender": "B",
+      "delay_before_sec": 12,
+      "text": "哈哈還好吧，才剛認識而已",
+      "expected_level": "safe"
+    },
+
+    {
+      "seq": 7, "phase": "第二段 警告", "sender": "A",
+      "delay_before_sec": 12,
+      "text": "我們這樣聊太慢了，直接見面吧，今晚就可以，我開車去接你",
+      "expected_level": "observation"
+    },
+    {
+      "seq": 8, "phase": "第二段 警告", "sender": "B",
+      "delay_before_sec": 12,
+      "text": "今晚不行耶，我明天要上班",
+      "expected_level": "safe"
+    },
+    {
+      "seq": 9, "phase": "第二段 警告", "sender": "A",
+      "delay_before_sec": 12,
+      "text": "你是不是在敷衍我，我這麼認真你都感覺不到嗎",
+      "expected_level": "warning",
+      "設計依據": "拉高 emotional_pressure，同時第 5 則的 manipulation 經衰退（×0.7）仍在，兩個維度皆過 NOISE_FLOOR 0.10，spread 由 0.2 升至約 0.4。"
+    },
+
+    {
+      "seq": 10, "phase": "第三段 限制", "sender": "A",
+      "delay_before_sec": 6,
+      "text": "你已讀不回是什麼意思，我做錯什麼了嗎",
+      "expected_level": "warning"
+    },
+    {
+      "seq": 11, "phase": "第三段 限制", "sender": "A",
+      "delay_before_sec": 6,
+      "text": "我從昨天到現在一直在想你說的話，你知不知道我為了你推掉多少事情。我對每個人都不會這樣，只有你讓我變成這樣，你至少回我一句話好不好",
+      "expected_level": "warning"
+    },
+    {
+      "seq": 12, "phase": "第三段 限制", "sender": "A",
+      "delay_before_sec": 6,
+      "text": "你不回我我就知道你根本沒把我當一回事，你們這種人就是這樣，先讓別人喜歡上你再消失",
+      "expected_level": "restricted"
+    },
+    {
+      "seq": 13, "phase": "第三段 限制", "sender": "A",
+      "delay_before_sec": 6,
+      "text": "我真的受不了了，你到底要我怎麼樣才肯理我，我現在整個人都快撐不住了，這都是因為你",
+      "expected_level": "restricted",
+      "設計依據": "四則連發且 B 不回，同時命中行為規則 high_volume_unanswered_push（unreplied>=3、consecutive_char_count>=120、volume_ratio>=0.75，harassment +0.2 / emotional +0.1）、情境規則 7 rebound_harassment（harassment +0.4 / emotional +0.2）、情境規則 4 pua_isolation_guilt（manipulation +0.4）。三個維度同時站上 NOISE_FLOOR，spread 升至約 0.6，composite 方能過 0.45。訊息必須寫長：行為規則 short_split_message_buffer 會對平均 8 字以下的短連發倒扣 harassment -0.12。"
+    },
+
+    {
+      "seq": 14, "phase": "第四段 封鎖", "sender": "A",
+      "delay_before_sec": 12,
+      "text": "我知道你住哪，你再不回我，我明天就直接去你家堵你",
+      "expected_level": "blocked",
+      "設計依據": "走單一維度覆寫（coercion >= 0.85 直接判 blocked，不看 composite）。composite 路徑要四個維度都到 0.7 才過 0.65，不實際。本句含兩個禁詞（我知道你住哪、去你家堵你），但禁詞現為 flag 模式、不在 Step 0 短路，會跑完整條流程才判定。"
+    }
+  ],
+
+  "每則要回報的欄位": [
+    "seq",
+    "sender",
+    "risk_level",
+    "composite_score",
+    "max_score",
+    "spread_score",
+    "spread_mode",
+    "trend_score",
+    "五個維度的累積值（sexual_boundary / coercion / manipulation / harassment / emotional_pressure）",
+    "triggered_rules",
+    "回應耗時秒數"
+  ],
+
+  "另外要回報的三件事": [
+    "Server/.env 裡 RISK_TIMEOUT_SEC 的值（只讀不改）。若無此變數或小於 3，請明講——那表示經由聊天主伺服器呼叫時每次都會逾時，App 畫面不會出現任何卡片，且不會報錯。",
+    "本次執行時 guardrail 分類器（llama-server :8081）是否在運行。",
+    "服務啟動日誌是否出現載入 32 筆禁詞的那一行。"
+  ],
+
+  "已知風險": "決定落點的關鍵是語意層（Gemini）給的五維度分數，該部分無法事先推算。2026-08-31 校準過的觸發腳本到 2026-09-06 即失準，同一組對話由穩定 restricted 掉到只剩 warning。故本檔須以實測結果為準。"
+}

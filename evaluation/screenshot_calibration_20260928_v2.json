@@ -1,0 +1,118 @@
+{
+  "fixture_id": "screenshot_calibration_20260928_v2",
+  "取代": "screenshot_calibration_20260928.json（第一版，單一長對話，已失敗）",
+  "第一版為什麼失敗": {
+    "實測": "2026-09-28 10:18–10:21，對話 calib_81476f05e6254bd18f9763ab6ec1f07e",
+    "observation 完全沒出現": "第 5 則 composite 0.0578（safe），第 7 則 0.2320（warning），0.10 至 0.20 這一段被整個跨過。原因是分散度佔 0.30 權重且跳著走：單一維度低於雜訊線 0.10 時 spread=0，過線變 0.2，兩個維度變約 0.4，每跳一階 composite 就加 0.06 至 0.12，而 observation 帶寬只有 0.10。",
+    "第三段升級過快": "間隔設 6 秒導致頻率頂到最高，persistent_annoyance（rule_freq_min 0.9）與 rebound_harassment 同時命中，兩條規則都加在 harassment 與 emotional_pressure 上，一則 +0.7，第 11 則即飽和至 1.000 並走單一維度覆寫判 blocked。第 11 至 13 則其實沒有經過 composite 分級。",
+    "結論": "改為四段獨立短對話，每段只衝一級即停；並把間隔拉長以避開頻率門檻。"
+  },
+
+  "本版設計原則": [
+    "每段對話獨立，用不同的全新 conversation_id，互不累積。",
+    "間隔一律 20 秒以上，避開 persistent_annoyance（freq>=0.9）與 rebound_harassment（freq>=0.75）。",
+    "B 每則都回，讓 unreplied_count 不超過 2，避開三條未回覆類的行為規則與情境規則 7。",
+    "預期值凡標示『實測推算』者，是拿第一版量到的增量算的；標示『估計』者為推算，可能不準。"
+  ],
+
+  "對應設定": {
+    "config_id": "threshold_v2_rule_heavy",
+    "thresholds": { "B_OBSERVATION": 0.10, "B_WARNING": 0.20, "B_RESTRICTED": 0.45, "B_BLOCKED": 0.65, "SINGLE_DIM_OVERRIDE": 0.85 },
+    "decision_logic": { "W_MAX": 0.6, "W_SPREAD": 0.3, "W_TREND": 0.1, "NOISE_FLOOR": 0.10, "SPREAD_MODE": "effdim" },
+    "decay_factor": 0.7
+  },
+
+  "執行限制": {
+    "時段": "當地時間 06:00 至 23:59（is_midnight 為 0 至 5 點，會改變結果）。",
+    "conversation_id": "四段各用一個全新且不存在的 id。",
+    "唯讀": "不得修改程式、設定或知識庫。",
+    "不得調整內容": "落點與 expected_level 不符時照實回報，不要改訊息去湊。"
+  },
+
+  "endpoint": {
+    "detect": "http://localhost:8001/api/v1/risk/detect",
+    "method": "POST",
+    "payload_schema": { "conversation_id": "string", "sender_id": "string", "receiver_id": "string", "current_message": "string" },
+    "python": "/home/sunny/桌面/Graduate_Project/Server/venv/bin/python"
+  },
+
+  "participants": { "A": "userA（施壓方）", "B": "userB（接收方）" },
+
+  "conversations": [
+    {
+      "id": "第一段",
+      "目標等級": "observation",
+      "conversation_id_建議": "calib_v2_obs",
+      "設計說明": "只讓 manipulation 一個維度活躍，靠兩則同性質訊息累積過雜訊線 0.10。第一版第 5 則量到 manipulation 增量 0.0825，同樣強度再送一次：0.0825×0.7+0.0825=0.1403，過線後 spread=0.2，trend=0.0578，composite=0.6(0.1403)+0.3(0.2)+0.1(0.0578)=0.150。關鍵是第二則不可帶出第二個維度，所以不提見面、不施壓、不帶愧疚。",
+      "預期 composite": "約 0.150（實測推算）",
+      "messages": [
+        { "seq": 1, "sender": "A", "delay_before_sec": 0,  "text": "你好，看你資料寫也喜歡爬山，最近有去哪嗎", "expected_level": "safe" },
+        { "seq": 2, "sender": "B", "delay_before_sec": 20, "text": "有啊，上個月去了小百岳", "expected_level": "safe" },
+        { "seq": 3, "sender": "A", "delay_before_sec": 20, "text": "其實我覺得跟你聊天很不一樣，才講沒幾句就覺得你懂我，我們是不是特別有緣", "expected_level": "safe", "備註": "第一版量到此則 manipulation 增量 0.0825、composite 0.0578" },
+        { "seq": 4, "sender": "B", "delay_before_sec": 20, "text": "哈哈還好吧，才剛認識而已", "expected_level": "safe" },
+        { "seq": 5, "sender": "A", "delay_before_sec": 20, "text": "我認真的，我遇過的人裡面你是最特別的一個，這種感覺不是每次都會有", "expected_level": "observation", "備註": "與第 3 則同性質同強度，只推 manipulation" }
+      ]
+    },
+
+    {
+      "id": "第二段",
+      "目標等級": "warning",
+      "conversation_id_建議": "calib_v2_warn",
+      "設計說明": "重現第一版第 5 與第 7 則的組合，實測 composite 0.2320，落在 warning 帶寬中段、離 restricted 還有 0.22，安全。",
+      "預期 composite": "約 0.232（實測值）",
+      "messages": [
+        { "seq": 1, "sender": "A", "delay_before_sec": 0,  "text": "你好，最近有出去玩嗎", "expected_level": "safe" },
+        { "seq": 2, "sender": "B", "delay_before_sec": 20, "text": "上週去了趟台中", "expected_level": "safe" },
+        { "seq": 3, "sender": "A", "delay_before_sec": 20, "text": "其實我覺得跟你聊天很不一樣，才講沒幾句就覺得你懂我，我們是不是特別有緣", "expected_level": "safe" },
+        { "seq": 4, "sender": "B", "delay_before_sec": 20, "text": "哈哈還好吧，才剛認識而已", "expected_level": "safe" },
+        { "seq": 5, "sender": "A", "delay_before_sec": 20, "text": "我們這樣聊太慢了，直接見面吧，今晚就可以，我開車去接你", "expected_level": "warning", "備註": "第一版量到此則 composite 0.2320、sexual 0.175、manipulation 0.133" }
+      ]
+    },
+
+    {
+      "id": "第三段",
+      "目標等級": "restricted",
+      "conversation_id_建議": "calib_v2_restrict",
+      "設計說明": "前四則重現第一版第 5、7、9 則的路徑（實測依序 0.0578 → 0.2320 → 0.3858），最後補一則純愧疚施壓，推高 emotional_pressure 與 manipulation 兩個維度。B 每則都回，unreplied 不超過 1，所以 rebound_harassment、persistent_annoyance、high_volume_unanswered_push 都不會觸發，避開第一版飽和的那條路。估算 composite 約 0.47（pua_isolation_guilt 若命中則約 0.62），兩者皆落在 restricted。",
+      "預期 composite": "0.47 至 0.62（估計）",
+      "拍照提醒": "restricted 的卡片在最後一則出現。拍完再決定要不要繼續第四段，本段不含封鎖訊息。",
+      "messages": [
+        { "seq": 1, "sender": "A", "delay_before_sec": 0,  "text": "你好，最近好嗎", "expected_level": "safe" },
+        { "seq": 2, "sender": "B", "delay_before_sec": 20, "text": "還可以，你呢", "expected_level": "safe" },
+        { "seq": 3, "sender": "A", "delay_before_sec": 20, "text": "其實我覺得跟你聊天很不一樣，才講沒幾句就覺得你懂我，我們是不是特別有緣", "expected_level": "safe" },
+        { "seq": 4, "sender": "B", "delay_before_sec": 20, "text": "哈哈還好吧，才剛認識而已", "expected_level": "safe" },
+        { "seq": 5, "sender": "A", "delay_before_sec": 20, "text": "我們這樣聊太慢了，直接見面吧，今晚就可以，我開車去接你", "expected_level": "warning" },
+        { "seq": 6, "sender": "B", "delay_before_sec": 20, "text": "今晚不行耶，我明天要上班", "expected_level": "safe" },
+        { "seq": 7, "sender": "A", "delay_before_sec": 20, "text": "你是不是在敷衍我，我這麼認真你都感覺不到嗎", "expected_level": "warning", "備註": "第一版量到此則 composite 0.3858、emotional 0.366" },
+        { "seq": 8, "sender": "B", "delay_before_sec": 20, "text": "沒有啦，真的是有事", "expected_level": "safe" },
+        { "seq": 9, "sender": "A", "delay_before_sec": 25, "text": "我從認識你到現在一直在想你說過的話，你知不知道我為了你推掉多少事情。我對每個人都不會這樣，只有你讓我變成這樣", "expected_level": "restricted", "備註": "純愧疚施壓，不含威脅也不連發，目標是推高 emotional 與 manipulation 兩個維度把分散度撐起來" }
+      ]
+    },
+
+    {
+      "id": "第四段",
+      "目標等級": "blocked",
+      "conversation_id_建議": "calib_v2_block",
+      "設計說明": "前七則與第三段相同，最後補一則明確威脅。第一版第 14 則量到 coercion 由 0.300 直接飽和至 1.000，因此只要先有一點 coercion 底子，這一則就會觸發單一維度覆寫（任一維度 >= 0.85 直接判 blocked）。該句含兩個禁詞（我知道你住哪、去你家堵你），但禁詞為 flag 模式、不在 Step 0 短路，會跑完整條流程才判定。",
+      "預期": "第 8 則 blocked，reason 應為 critical_override（實測推算）",
+      "messages": [
+        { "seq": 1, "sender": "A", "delay_before_sec": 0,  "text": "你好，最近好嗎", "expected_level": "safe" },
+        { "seq": 2, "sender": "B", "delay_before_sec": 20, "text": "還可以，你呢", "expected_level": "safe" },
+        { "seq": 3, "sender": "A", "delay_before_sec": 20, "text": "其實我覺得跟你聊天很不一樣，才講沒幾句就覺得你懂我，我們是不是特別有緣", "expected_level": "safe" },
+        { "seq": 4, "sender": "B", "delay_before_sec": 20, "text": "哈哈還好吧，才剛認識而已", "expected_level": "safe" },
+        { "seq": 5, "sender": "A", "delay_before_sec": 20, "text": "我們這樣聊太慢了，直接見面吧，今晚就可以，我開車去接你", "expected_level": "warning" },
+        { "seq": 6, "sender": "B", "delay_before_sec": 20, "text": "今晚不行耶，我明天要上班", "expected_level": "safe" },
+        { "seq": 7, "sender": "A", "delay_before_sec": 20, "text": "你是不是在敷衍我，我這麼認真你都感覺不到嗎", "expected_level": "warning" },
+        { "seq": 8, "sender": "A", "delay_before_sec": 25, "text": "我知道你住哪，你再不回我，我明天就直接去你家堵你", "expected_level": "blocked" }
+      ]
+    }
+  ],
+
+  "每則要回報的欄位": [
+    "conversation（第幾段）", "seq", "sender", "expected_level", "risk_level",
+    "composite_score", "max_score", "spread_score", "trend_score",
+    "五個維度的累積值", "triggered_rules", "reason（若回應有提供）", "回應耗時秒數"
+  ],
+
+  "額外要確認的一件事": "第四段第 8 則判 blocked 時，回應裡的 reason 是不是 critical_override。若是 composite 判的（reason 非 critical_override 且 composite >= 0.65），請特別註明，因為那代表覆寫沒有作用到，與設計預期不同。"
+}

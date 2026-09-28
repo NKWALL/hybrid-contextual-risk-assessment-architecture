@@ -1,0 +1,22 @@
+# 環境與金鑰
+.env
+.env.local
+*.key
+*.pem
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+
+# 系統
+.DS_Store
+Thumbs.db
+
+# 執行期產物
+*.log
+*.bak
+*.bak[0-9]
