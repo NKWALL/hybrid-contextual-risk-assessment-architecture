@@ -1,0 +1,2158 @@
+{
+  "database_id": "your_appwrite_database_id",
+  "collections": [
+    {
+      "name": "conversations",
+      "id": "conversations",
+      "attributes": [
+        {
+          "key": "user_a_id",
+          "type": "string",
+          "status": "available",
+          "error": "",
+          "required": true,
+          "array": false,
+          "$createdAt": "2026-03-25T05:44:45.801+00:00",
+          "$updatedAt": "2026-05-17T11:56:27.021+00:00",
+          "size": 50,
+          "default": null,
+          "encrypt": false
+        },
+        {
+          "key": "user_b_id",
+          "type": "string",
+          "status": "available",
+          "error": "",
+          "required": true,
+          "array": false,
+          "$createdAt": "2026-03-25T05:47:51.503+00:00",
+          "$updatedAt": "2026-05-17T11:56:32.948+00:00",
+          "size": 50,
+          "default": null,
+          "encrypt": false
+        },
+        {
+          "key": "last_activity",
+          "type": "datetime",
+          "status": "available",
+          "error": "",
+          "required": false,
+          "array": false,
+          "$createdAt": "2026-03-25T06:09:14.560+00:00",
+          "$updatedAt": "2026-03-25T06:09:14.578+00:00",
+          "format": "",
+          "default": null
+        }
+      ],
+      "indexes": [
+        {
+          "$id": "1_1_key_user_a_id",
+          "$createdAt": "2026-03-25T14:16:47.325+00:00",
+          "$updatedAt": "2026-03-25T14:16:47.340+00:00",
+          "key": "key_user_a_id",
+          "type": "key",
+          "status": "available",
+          "error": "",
+          "attributes": [
+            "user_a_id"
+          ],
+          "lengths": [
+            0
+          ],
+          "orders": [
+            "ASC"
+          ]
+        },
+        {
+          "$id": "1_1_key_user_b_id",
+          "$createdAt": "2026-03-25T14:16:56.545+00:00",
+          "$updatedAt": "2026-03-25T14:16:56.561+00:00",
+          "key": "key_user_b_id",
+          "type": "key",
+          "status": "available",
+          "error": "",
+          "attributes": [
+            "user_b_id"
+          ],
+          "lengths": [
+            0
+          ],
+          "orders": [
+            "ASC"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "messages",
+      "id": "messages",
+      "attributes": [
+        {
+          "key": "conversation_id",
+          "type": "string",
+          "status": "available",
+          "error": "",
+          "required": true,
+          "array": false,
+          "$createdAt": "2026-03-25T06:10:26.204+00:00",
+          "$updatedAt": "2026-05-17T11:57:01.813+00:00",
+          "size": 50,
+          "default": null,
+          "encrypt": false
+        },
+        {
+          "key": "sender_id",
+          "type": "string",
+          "status": "available",
+          "error": "",
+          "required": true,
+          "array": false,
+          "$createdAt": "2026-03-25T06:40:54.544+00:00",
+          "$updatedAt": "2026-05-17T11:57:15.344+00:00",
+          "size": 50,
+          "default": null,
+          "encrypt": false
+        },
+        {
+          "key": "content",
+          "type": "string",
+          "status": "available",
+          "error": "",
+          "required": true,
+          "array": false,
+          "$createdAt": "2026-03-25T06:42:58.779+00:00",
+          "$updatedAt": "2026-05-17T11:57:36.204+00:00",
+          "size": 2000,
+          "default": null,
+          "encrypt": false
+        },
+        {
+          "key": "timestamp",
+          "type": "datetime",
+          "status": "available",
+          "error": "",
+          "required": true,
+          "array": false,
+          "$createdAt": "2026-03-25T06:43:09.060+00:00",
+          "$updatedAt": "2026-05-17T11:57:42.377+00:00",
+          "format": "",
+          "default": null
+        },
+        {
+          "key": "is_blocked",
+          "type": "boolean",
+          "status": "available",
+          "error": "",
+          "required": false,
+          "array": false,
+          "$createdAt": "2026-03-25T06:43:30.985+00:00",
+          "$updatedAt": "2026-03-25T06:43:31.001+00:00",
+          "default": false
+        },
+        {
+          "key": "delivery_status",
+          "type": "string",
+          "status": "available",
+          "error": "",
+          "required": false,
+          "array": false,
+          "$createdAt": "2026-05-18T13:14:27.925+00:00",
+          "$updatedAt": "2026-05-18T13:14:27.956+00:00",
+          "size": 30,
+          "default": "delivered",
+          "encrypt": false
+        },
+        {
+          "key": "reviewed_at",
+          "type": "datetime",
+          "status": "available",
+          "error": "",
+          "required": false,
+          "array": false,
+          "$createdAt": "2026-05-18T13:14:45.831+00:00",
+          "$updatedAt": "2026-05-18T13:14:45.848+00:00",
+          "format": "",
+          "default": null
+        },
+        {
+          "key": "delivered_at",
+          "type": "datetime",
+          "status": "available",
+          "error": "",
+          "required": false,
+          "array": false,
+          "$createdAt": "2026-05-18T13:15:01.620+00:00",
+          "$updatedAt": "2026-05-18T13:15:01.637+00:00",
+          "format": "",
+          "default": null
+        }
+      ],
+      "indexes": [
+        {
+          "$id": "1_2_key_conversation_id",
+          "$createdAt": "2026-03-25T14:11:22.410+00:00",
+          "$updatedAt": "2026-03-25T14:11:22.424+00:00",
+          "key": "key_conversation_id",
+          "type": "key",
+          "status": "available",
+          "error": "",
+          "attributes": [
+            "conversation_id"
+          ],
+          "lengths": [
+            0
+          ],
+          "orders": [
+            "ASC"
+          ]
+        },
+        {
+          "$id": "1_2_key_conv_delivery_time",
+          "$createdAt": "2026-05-18T13:18:27.060+00:00",
+          "$updatedAt": "2026-05-18T13:18:27.077+00:00",
+          "key": "key_conv_delivery_time",
+          "type": "key",
+          "status": "available",
+          "error": "",
+          "attributes": [
+            "conversation_id",
+            "delivery_status",
+            "timestamp"
+          ],
+          "lengths": [
+            0,
+            0,
+            0
+          ],
+          "orders": [
+            "ASC",
+            "ASC",
+            "DESC"
+          ]
+        },
+        {
+          "$id": "1_2_key_conv_time",
+          "$createdAt": "2026-05-18T13:19:01.360+00:00",
+          "$updatedAt": "2026-05-18T13:19:01.375+00:00",
+          "key": "key_conv_time",
+          "type": "key",
+          "status": "available",
+          "error": "",
+          "attributes": [
+            "conversation_id",
+            "timestamp"
+          ],
+          "lengths": [
+            0,
+            0
+          ],
+          "orders": [
+            "ASC",
+            "DESC"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "temporal_features",
+      "id": "temporal_features",
+      "attributes": [
+        {
+          "key": "user_id",
+          "type": "string",
+          "status": "available",
+          "error": "",
+          "required": false,
+          "array": false,
+          "$createdAt": "2026-03-25T07:19:57.010+00:00",
+          "$updatedAt": "2026-03-25T07:19:57.027+00:00",
+          "size": 50,
+          "default": null,
+          "encrypt": false
+        },
+        {
+          "key": "conversation_id",
+          "type": "string",
+          "status": "available",
+          "error": "",
+          "required": false,
+          "array": false,
+          "$createdAt": "2026-03-25T07:20:11.152+00:00",
+          "$updatedAt": "2026-03-25T07:20:11.171+00:00",
+          "size": 50,
+          "default": null,
+          "encrypt": false
+        },
+        {
+          "key": "latency",
+          "type": "double",
+          "status": "available",
+          "error": "",
+          "required": false,
+          "array": false,
+          "$createdAt": "2026-03-25T07:21:12.720+00:00",
+          "$updatedAt": "2026-03-25T07:21:12.737+00:00",
+          "min": -1.7976931348623157e+308,
+          "max": 1.7976931348623157e+308,
+          "default": null
+        },
+        {
+          "key": "frequency",
+          "type": "double",
+          "status": "available",
+          "error": "",
+          "required": false,
+          "array": false,
+          "$createdAt": "2026-03-25T07:21:43.973+00:00",
+          "$updatedAt": "2026-03-25T07:21:43.990+00:00",
+          "min": -1.7976931348623157e+308,
+          "max": 1.7976931348623157e+308,
+          "default": null
+        },
+        {
+          "key": "message_burst_count",
+          "type": "integer",
+          "status": "available",
+          "error": "",
+          "required": false,
+          "array": false,
+          "$createdAt": "2026-03-25T07:22:04.721+00:00",
+          "$updatedAt": "2026-03-25T07:22:04.740+00:00",
+          "min": -9223372036854775808,
+          "max": 9223372036854775807,
+          "default": null
+        },
+        {
+          "key": "last_message_time",
+          "type": "datetime",
+          "status": "available",
+          "error": "",
+          "required": false,
+          "array": false,
+          "$createdAt": "2026-03-25T07:22:29.679+00:00",
+          "$updatedAt": "2026-03-25T07:22:29.695+00:00",
+          "format": "",
+          "default": null
+        },
+        {
+          "key": "unreplied_count",
+          "type": "integer",
+          "status": "available",
+          "error": "",
+          "required": false,
+          "array": false,
+          "$createdAt": "2026-05-18T13:22:13.537+00:00",
+          "$updatedAt": "2026-05-18T13:22:13.550+00:00",
+          "min": -9223372036854775808,
+          "max": 9223372036854775807,
+          "default": 0
+        },
+        {
+          "key": "consecutive_char_count",
+          "type": "integer",
+          "status": "available",
+          "error": "",
+          "required": false,
+          "array": false,
+          "$createdAt": "2026-05-18T13:22:34.733+00:00",
+          "$updatedAt": "2026-05-18T13:22:34.750+00:00",
+          "min": -9223372036854775808,
+          "max": 9223372036854775807,
+          "default": 0
+        },
+        {
+          "key": "message_ratio",
+          "type": "double",
+          "status": "available",
+          "error": "",
+          "required": false,
+          "array": false,
+          "$createdAt": "2026-05-18T13:23:14.165+00:00",
+          "$updatedAt": "2026-05-18T13:23:14.177+00:00",
+          "min": -1.7976931348623157e+308,
+          "max": 1.7976931348623157e+308,
+          "default": 1
+        },
+        {
+          "key": "volume_ratio",
+          "type": "double",
+          "status": "available",
+          "error": "",
+          "required": false,
+          "array": false,
+          "$createdAt": "2026-05-18T13:23:35.104+00:00",
+          "$updatedAt": "2026-05-18T13:23:35.117+00:00",
+          "min": -1.7976931348623157e+308,
+          "max": 1.7976931348623157e+308,
+          "default": 1
+        },
+        {
+          "key": "avg_chars_per_message",
+          "type": "double",
+          "status": "available",
+          "error": "",
+          "required": false,
+          "array": false,
+          "$createdAt": "2026-05-18T13:23:58.229+00:00",
+          "$updatedAt": "2026-05-18T13:23:58.243+00:00",
+          "min": -1.7976931348623157e+308,
+          "max": 1.7976931348623157e+308,
+          "default": 0
+        },
+        {
+          "key": "reply_latency_seconds",
+          "type": "integer",
+          "status": "available",
+          "error": "",
+          "required": false,
+          "array": false,
+          "$createdAt": "2026-05-18T13:31:18.533+00:00",
+          "$updatedAt": "2026-05-18T13:31:18.548+00:00",
+          "min": -9223372036854775808,
+          "max": 9223372036854775807,
+          "default": null
+        },
+        {
+          "key": "idle_time_seconds",
+          "type": "integer",
+          "status": "available",
+          "error": "",
+          "required": false,
+          "array": false,
+          "$createdAt": "2026-05-18T13:31:43.411+00:00",
+          "$updatedAt": "2026-05-18T13:31:43.426+00:00",
+          "min": -9223372036854775808,
+          "max": 9223372036854775807,
+          "default": null
+        }
+      ],
+      "indexes": [
+        {
+          "$id": "1_3_key_conv_user",
+          "$createdAt": "2026-03-25T14:14:28.686+00:00",
+          "$updatedAt": "2026-03-25T14:14:28.702+00:00",
+          "key": "key_conv_user",
+          "type": "key",
+          "status": "available",
+          "error": "",
+          "attributes": [
+            "conversation_id",
+            "user_id"
+          ],
+          "lengths": [
+            0,
+            0
+          ],
+          "orders": [
+            "ASC",
+            "ASC"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "risk_analysis_logs",
+      "id": "risk_analysis_logs_",
+      "attributes": [
+        {
+          "key": "message_id",
+          "type": "string",
+          "status": "available",
+          "error": "",
+          "required": true,
+          "array": false,
+          "$createdAt": "2026-03-25T13:59:19.222+00:00",
+          "$updatedAt": "2026-05-17T11:58:07.336+00:00",
+          "size": 50,
+          "default": null,
+          "encrypt": false
+        },
+        {
+          "key": "conversation_id",
+          "type": "string",
+          "status": "available",
+          "error": "",
+          "required": true,
+          "array": false,
+          "$createdAt": "2026-03-25T13:59:34.632+00:00",
+          "$updatedAt": "2026-05-17T11:58:12.483+00:00",
+          "size": 50,
+          "default": null,
+          "encrypt": false
+        },
+        {
+          "key": "delta_rule",
+          "type": "string",
+          "status": "available",
+          "error": "",
+          "required": false,
+          "array": false,
+          "$createdAt": "2026-03-25T13:59:58.957+00:00",
+          "$updatedAt": "2026-03-25T13:59:58.974+00:00",
+          "size": 500,
+          "default": null,
+          "encrypt": false
+        },
+        {
+          "key": "delta_nlp",
+          "type": "string",
+          "status": "available",
+          "error": "",
+          "required": false,
+          "array": false,
+          "$createdAt": "2026-03-25T14:00:10.609+00:00",
+          "$updatedAt": "2026-03-25T14:00:10.624+00:00",
+          "size": 500,
+          "default": null,
+          "encrypt": false
+        },
+        {
+          "key": "delta_final",
+          "type": "string",
+          "status": "available",
+          "error": "",
+          "required": false,
+          "array": false,
+          "$createdAt": "2026-03-25T14:00:32.214+00:00",
+          "$updatedAt": "2026-03-25T14:00:32.229+00:00",
+          "size": 500,
+          "default": null,
+          "encrypt": false
+        },
+        {
+          "key": "nlp_reasoning",
+          "type": "string",
+          "status": "available",
+          "error": "",
+          "required": false,
+          "array": false,
+          "$createdAt": "2026-03-25T14:00:49.586+00:00",
+          "$updatedAt": "2026-03-25T14:00:49.602+00:00",
+          "size": 5000,
+          "default": null,
+          "encrypt": false
+        },
+        {
+          "key": "confidence",
+          "type": "double",
+          "status": "available",
+          "error": "",
+          "required": false,
+          "array": false,
+          "$createdAt": "2026-03-25T14:01:07.961+00:00",
+          "$updatedAt": "2026-03-25T14:01:07.978+00:00",
+          "min": -1.7976931348623157e+308,
+          "max": 1.7976931348623157e+308,
+          "default": null
+        },
+        {
+          "key": "triggered_rules",
+          "type": "string",
+          "status": "available",
+          "error": "",
+          "required": false,
+          "array": false,
+          "$createdAt": "2026-03-25T14:01:23.606+00:00",
+          "$updatedAt": "2026-03-25T14:01:23.618+00:00",
+          "size": 2000,
+          "default": null,
+          "encrypt": false
+        },
+        {
+          "key": "triggered_scenarios",
+          "type": "string",
+          "status": "available",
+          "error": "",
+          "required": false,
+          "array": false,
+          "$createdAt": "2026-03-25T14:01:36.284+00:00",
+          "$updatedAt": "2026-03-25T14:01:36.300+00:00",
+          "size": 2000,
+          "default": null,
+          "encrypt": false
+        },
+        {
+          "key": "timestamp",
+          "type": "datetime",
+          "status": "available",
+          "error": "",
+          "required": true,
+          "array": false,
+          "$createdAt": "2026-03-25T14:01:52.953+00:00",
+          "$updatedAt": "2026-05-17T11:58:28.313+00:00",
+          "format": "",
+          "default": null
+        },
+        {
+          "key": "max_score",
+          "type": "double",
+          "status": "available",
+          "error": "",
+          "required": false,
+          "array": false,
+          "$createdAt": "2026-03-29T15:39:10.557+00:00",
+          "$updatedAt": "2026-03-29T15:39:10.588+00:00",
+          "min": -1.7976931348623157e+308,
+          "max": 1.7976931348623157e+308,
+          "default": null
+        },
+        {
+          "key": "spread_score",
+          "type": "double",
+          "status": "available",
+          "error": "",
+          "required": false,
+          "array": false,
+          "$createdAt": "2026-03-29T15:39:39.685+00:00",
+          "$updatedAt": "2026-03-29T15:39:39.704+00:00",
+          "min": -1.7976931348623157e+308,
+          "max": 1.7976931348623157e+308,
+          "default": null
+        },
+        {
+          "key": "trend_score",
+          "type": "double",
+          "status": "available",
+          "error": "",
+          "required": false,
+          "array": false,
+          "$createdAt": "2026-03-29T15:39:59.784+00:00",
+          "$updatedAt": "2026-03-29T15:39:59.802+00:00",
+          "min": -1.7976931348623157e+308,
+          "max": 1.7976931348623157e+308,
+          "default": null
+        },
+        {
+          "key": "composite_score",
+          "type": "double",
+          "status": "available",
+          "error": "",
+          "required": false,
+          "array": false,
+          "$createdAt": "2026-03-29T15:40:38.083+00:00",
+          "$updatedAt": "2026-03-29T15:40:38.135+00:00",
+          "min": -1.7976931348623157e+308,
+          "max": 1.7976931348623157e+308,
+          "default": null
+        },
+        {
+          "key": "guardrail_flagged_words",
+          "type": "string",
+          "status": "available",
+          "error": "",
+          "required": false,
+          "array": false,
+          "$createdAt": "2026-05-29T15:42:33.601+00:00",
+          "$updatedAt": "2026-05-29T15:42:33.626+00:00",
+          "size": 500,
+          "default": null,
+          "encrypt": false
+        },
+        {
+          "key": "guardrail_classifier_flag",
+          "type": "string",
+          "status": "available",
+          "error": "",
+          "required": false,
+          "array": false,
+          "$createdAt": "2026-05-29T16:16:53.414+00:00",
+          "$updatedAt": "2026-05-29T16:16:53.433+00:00",
+          "size": 200,
+          "default": null,
+          "encrypt": false
+        },
+        {
+          "key": "detected_features",
+          "type": "string",
+          "status": "available",
+          "error": "",
+          "required": false,
+          "array": false,
+          "$createdAt": "2026-08-04T01:35:30.756+00:00",
+          "$updatedAt": "2026-08-04T01:35:30.772+00:00",
+          "size": 1000,
+          "default": null,
+          "encrypt": false
+        }
+      ],
+      "indexes": [
+        {
+          "$id": "1_4_key_conversation_id",
+          "$createdAt": "2026-03-25T14:03:09.359+00:00",
+          "$updatedAt": "2026-03-25T14:03:09.375+00:00",
+          "key": "key_conversation_id",
+          "type": "key",
+          "status": "available",
+          "error": "",
+          "attributes": [
+            "conversation_id"
+          ],
+          "lengths": [
+            0
+          ],
+          "orders": [
+            "ASC"
+          ]
+        },
+        {
+          "$id": "1_4_key_message_id",
+          "$createdAt": "2026-03-25T14:23:18.402+00:00",
+          "$updatedAt": "2026-03-25T14:23:18.416+00:00",
+          "key": "key_message_id",
+          "type": "unique",
+          "status": "available",
+          "error": "",
+          "attributes": [
+            "message_id"
+          ],
+          "lengths": [
+            0
+          ],
+          "orders": [
+            "ASC"
+          ]
+        },
+        {
+          "$id": "1_4_key_timestamp",
+          "$createdAt": "2026-03-25T14:23:39.339+00:00",
+          "$updatedAt": "2026-03-25T14:23:39.354+00:00",
+          "key": "key_timestamp",
+          "type": "key",
+          "status": "available",
+          "error": "",
+          "attributes": [
+            "timestamp"
+          ],
+          "lengths": [
+            0
+          ],
+          "orders": [
+            "ASC"
+          ]
+        },
+        {
+          "$id": "1_4_key_conv_time",
+          "$createdAt": "2026-03-25T14:24:20.828+00:00",
+          "$updatedAt": "2026-03-25T14:24:20.843+00:00",
+          "key": "key_conv_time",
+          "type": "key",
+          "status": "available",
+          "error": "",
+          "attributes": [
+            "conversation_id",
+            "timestamp"
+          ],
+          "lengths": [
+            0,
+            0
+          ],
+          "orders": [
+            "ASC",
+            "DESC"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "risk_state_history",
+      "id": "risk_state_history",
+      "attributes": [
+        {
+          "key": "conversation_id",
+          "type": "string",
+          "status": "available",
+          "error": "",
+          "required": true,
+          "array": false,
+          "$createdAt": "2026-03-25T14:05:34.679+00:00",
+          "$updatedAt": "2026-05-17T12:06:35.709+00:00",
+          "size": 50,
+          "default": null,
+          "encrypt": false
+        },
+        {
+          "key": "user_id",
+          "type": "string",
+          "status": "available",
+          "error": "",
+          "required": false,
+          "array": false,
+          "$createdAt": "2026-03-25T14:06:06.776+00:00",
+          "$updatedAt": "2026-03-25T14:06:06.794+00:00",
+          "size": 50,
+          "default": null,
+          "encrypt": false
+        },
+        {
+          "key": "triggered_by_msg_id",
+          "type": "string",
+          "status": "available",
+          "error": "",
+          "required": true,
+          "array": false,
+          "$createdAt": "2026-03-25T14:06:32.444+00:00",
+          "$updatedAt": "2026-05-17T12:06:44.539+00:00",
+          "size": 50,
+          "default": null,
+          "encrypt": false
+        },
+        {
+          "key": "risk_state",
+          "type": "string",
+          "status": "available",
+          "error": "",
+          "required": true,
+          "array": false,
+          "$createdAt": "2026-03-25T14:06:46.900+00:00",
+          "$updatedAt": "2026-05-17T12:06:53.920+00:00",
+          "size": 1000,
+          "default": null,
+          "encrypt": false
+        },
+        {
+          "key": "risk_level",
+          "type": "string",
+          "status": "available",
+          "error": "",
+          "required": true,
+          "array": false,
+          "$createdAt": "2026-03-25T14:06:57.526+00:00",
+          "$updatedAt": "2026-05-17T12:07:02.579+00:00",
+          "size": 20,
+          "default": null,
+          "encrypt": false
+        },
+        {
+          "key": "risk_delta_total",
+          "type": "string",
+          "status": "available",
+          "error": "",
+          "required": false,
+          "array": false,
+          "$createdAt": "2026-03-25T14:07:28.031+00:00",
+          "$updatedAt": "2026-03-25T14:07:28.048+00:00",
+          "size": 1000,
+          "default": null,
+          "encrypt": false
+        },
+        {
+          "key": "decay_applied",
+          "type": "boolean",
+          "status": "available",
+          "error": "",
+          "required": false,
+          "array": false,
+          "$createdAt": "2026-03-25T14:07:55.727+00:00",
+          "$updatedAt": "2026-03-25T14:07:55.743+00:00",
+          "default": null
+        },
+        {
+          "key": "timestamp",
+          "type": "datetime",
+          "status": "available",
+          "error": "",
+          "required": true,
+          "array": false,
+          "$createdAt": "2026-03-25T14:08:02.234+00:00",
+          "$updatedAt": "2026-05-17T12:07:11.244+00:00",
+          "format": "",
+          "default": null
+        }
+      ],
+      "indexes": [
+        {
+          "$id": "1_5_key_conv_user",
+          "$createdAt": "2026-03-25T14:15:41.816+00:00",
+          "$updatedAt": "2026-03-25T14:15:41.832+00:00",
+          "key": "key_conv_user",
+          "type": "key",
+          "status": "available",
+          "error": "",
+          "attributes": [
+            "conversation_id",
+            "user_id"
+          ],
+          "lengths": [
+            0,
+            0
+          ],
+          "orders": [
+            "ASC",
+            "ASC"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "intervention_logs",
+      "id": "intervention_logs",
+      "attributes": [
+        {
+          "key": "conversation_id",
+          "type": "string",
+          "status": "available",
+          "error": "",
+          "required": true,
+          "array": false,
+          "$createdAt": "2026-03-25T14:08:57.013+00:00",
+          "$updatedAt": "2026-05-17T12:07:24.730+00:00",
+          "size": 50,
+          "default": null,
+          "encrypt": false
+        },
+        {
+          "key": "user_id",
+          "type": "string",
+          "status": "available",
+          "error": "",
+          "required": false,
+          "array": false,
+          "$createdAt": "2026-03-25T14:09:25.887+00:00",
+          "$updatedAt": "2026-03-25T14:09:25.904+00:00",
+          "size": 50,
+          "default": null,
+          "encrypt": false
+        },
+        {
+          "key": "risk_level",
+          "type": "string",
+          "status": "available",
+          "error": "",
+          "required": true,
+          "array": false,
+          "$createdAt": "2026-03-25T14:09:42.955+00:00",
+          "$updatedAt": "2026-05-17T12:08:03.339+00:00",
+          "size": 20,
+          "default": null,
+          "encrypt": false
+        },
+        {
+          "key": "action_taken",
+          "type": "string",
+          "status": "available",
+          "error": "",
+          "required": false,
+          "array": false,
+          "$createdAt": "2026-03-25T14:09:57.671+00:00",
+          "$updatedAt": "2026-03-25T14:09:57.688+00:00",
+          "size": 100,
+          "default": null,
+          "encrypt": false
+        },
+        {
+          "key": "user_response",
+          "type": "string",
+          "status": "available",
+          "error": "",
+          "required": false,
+          "array": false,
+          "$createdAt": "2026-03-25T14:10:12.702+00:00",
+          "$updatedAt": "2026-03-25T14:10:12.719+00:00",
+          "size": 50,
+          "default": null,
+          "encrypt": false
+        },
+        {
+          "key": "timestamp",
+          "type": "datetime",
+          "status": "available",
+          "error": "",
+          "required": true,
+          "array": false,
+          "$createdAt": "2026-03-25T14:10:23.951+00:00",
+          "$updatedAt": "2026-05-17T12:08:10.287+00:00",
+          "format": "",
+          "default": null
+        },
+        {
+          "key": "triggered_by_msg_id",
+          "type": "string",
+          "status": "available",
+          "error": "",
+          "required": true,
+          "array": false,
+          "$createdAt": "2026-03-31T13:20:27.218+00:00",
+          "$updatedAt": "2026-05-17T12:07:34.363+00:00",
+          "size": 50,
+          "default": null,
+          "encrypt": false
+        },
+        {
+          "key": "sender_id",
+          "type": "string",
+          "status": "available",
+          "error": "",
+          "required": true,
+          "array": false,
+          "$createdAt": "2026-03-31T13:20:43.945+00:00",
+          "$updatedAt": "2026-05-17T12:07:49.232+00:00",
+          "size": 50,
+          "default": null,
+          "encrypt": false
+        },
+        {
+          "key": "receiver_id",
+          "type": "string",
+          "status": "available",
+          "error": "",
+          "required": true,
+          "array": false,
+          "$createdAt": "2026-03-31T13:20:52.865+00:00",
+          "$updatedAt": "2026-05-17T12:07:54.305+00:00",
+          "size": 50,
+          "default": null,
+          "encrypt": false
+        },
+        {
+          "key": "sender_action",
+          "type": "string",
+          "status": "available",
+          "error": "",
+          "required": false,
+          "array": false,
+          "$createdAt": "2026-03-31T13:21:09.694+00:00",
+          "$updatedAt": "2026-03-31T13:21:09.711+00:00",
+          "size": 50,
+          "default": null,
+          "encrypt": false
+        },
+        {
+          "key": "receiver_action",
+          "type": "string",
+          "status": "available",
+          "error": "",
+          "required": false,
+          "array": false,
+          "$createdAt": "2026-03-31T13:21:24.088+00:00",
+          "$updatedAt": "2026-03-31T13:21:24.105+00:00",
+          "size": 50,
+          "default": null,
+          "encrypt": false
+        },
+        {
+          "key": "decision_reason",
+          "type": "string",
+          "status": "available",
+          "error": "",
+          "required": false,
+          "array": false,
+          "$createdAt": "2026-03-31T13:21:37.640+00:00",
+          "$updatedAt": "2026-03-31T13:21:37.656+00:00",
+          "size": 50,
+          "default": null,
+          "encrypt": false
+        },
+        {
+          "key": "primary_risk_type",
+          "type": "string",
+          "status": "available",
+          "error": "",
+          "required": false,
+          "array": false,
+          "$createdAt": "2026-03-31T13:21:49.941+00:00",
+          "$updatedAt": "2026-03-31T13:21:49.960+00:00",
+          "size": 50,
+          "default": null,
+          "encrypt": false
+        },
+        {
+          "key": "risk_state_snapshot",
+          "type": "string",
+          "status": "available",
+          "error": "",
+          "required": false,
+          "array": false,
+          "$createdAt": "2026-03-31T13:22:06.909+00:00",
+          "$updatedAt": "2026-03-31T13:22:06.925+00:00",
+          "size": 1000,
+          "default": null,
+          "encrypt": false
+        },
+        {
+          "key": "composite_score",
+          "type": "double",
+          "status": "available",
+          "error": "",
+          "required": false,
+          "array": false,
+          "$createdAt": "2026-03-31T13:22:20.402+00:00",
+          "$updatedAt": "2026-03-31T13:22:20.418+00:00",
+          "min": -1.7976931348623157e+308,
+          "max": 1.7976931348623157e+308,
+          "default": null
+        },
+        {
+          "key": "max_score",
+          "type": "double",
+          "status": "available",
+          "error": "",
+          "required": false,
+          "array": false,
+          "$createdAt": "2026-03-31T13:22:38.362+00:00",
+          "$updatedAt": "2026-03-31T13:22:38.379+00:00",
+          "min": -1.7976931348623157e+308,
+          "max": 1.7976931348623157e+308,
+          "default": null
+        },
+        {
+          "key": "spread_score",
+          "type": "double",
+          "status": "available",
+          "error": "",
+          "required": false,
+          "array": false,
+          "$createdAt": "2026-03-31T13:22:49.342+00:00",
+          "$updatedAt": "2026-03-31T13:22:49.359+00:00",
+          "min": -1.7976931348623157e+308,
+          "max": 1.7976931348623157e+308,
+          "default": null
+        },
+        {
+          "key": "trend_score",
+          "type": "double",
+          "status": "available",
+          "error": "",
+          "required": false,
+          "array": false,
+          "$createdAt": "2026-03-31T13:22:59.891+00:00",
+          "$updatedAt": "2026-03-31T13:22:59.907+00:00",
+          "min": -1.7976931348623157e+308,
+          "max": 1.7976931348623157e+308,
+          "default": null
+        },
+        {
+          "key": "sender_feedback",
+          "type": "string",
+          "status": "available",
+          "error": "",
+          "required": false,
+          "array": false,
+          "$createdAt": "2026-03-31T13:23:17.160+00:00",
+          "$updatedAt": "2026-03-31T13:23:17.177+00:00",
+          "size": 50,
+          "default": null,
+          "encrypt": false
+        },
+        {
+          "key": "receiver_feedback",
+          "type": "string",
+          "status": "available",
+          "error": "",
+          "required": false,
+          "array": false,
+          "$createdAt": "2026-03-31T13:23:25.705+00:00",
+          "$updatedAt": "2026-03-31T13:23:25.723+00:00",
+          "size": 50,
+          "default": null,
+          "encrypt": false
+        },
+        {
+          "key": "sender_appeal_text",
+          "type": "string",
+          "status": "available",
+          "error": "",
+          "required": false,
+          "array": false,
+          "$createdAt": "2026-08-04T01:22:45.244+00:00",
+          "$updatedAt": "2026-08-04T01:22:45.271+00:00",
+          "size": 2000,
+          "default": null,
+          "encrypt": false
+        },
+        {
+          "key": "cooldown_seconds",
+          "type": "integer",
+          "status": "available",
+          "error": "",
+          "required": false,
+          "array": false,
+          "$createdAt": "2026-08-04T01:34:25.282+00:00",
+          "$updatedAt": "2026-08-04T01:34:25.300+00:00",
+          "min": -9223372036854775808,
+          "max": 9223372036854775807,
+          "default": 0
+        },
+        {
+          "key": "receiver_report_text",
+          "type": "string",
+          "status": "available",
+          "error": "",
+          "required": false,
+          "array": false,
+          "$createdAt": "2026-08-22T14:38:05.803+00:00",
+          "$updatedAt": "2026-08-22T14:38:05.851+00:00",
+          "size": 2000,
+          "default": null,
+          "encrypt": false
+        }
+      ],
+      "indexes": [
+        {
+          "$id": "1_6_key_conversation_id",
+          "$createdAt": "2026-03-25T14:09:08.165+00:00",
+          "$updatedAt": "2026-03-25T14:09:08.179+00:00",
+          "key": "key_conversation_id",
+          "type": "key",
+          "status": "available",
+          "error": "",
+          "attributes": [
+            "conversation_id"
+          ],
+          "lengths": [
+            0
+          ],
+          "orders": [
+            "ASC"
+          ]
+        },
+        {
+          "$id": "1_6_key_sender_id",
+          "$createdAt": "2026-03-31T13:24:21.876+00:00",
+          "$updatedAt": "2026-03-31T13:24:21.892+00:00",
+          "key": "key_sender_id",
+          "type": "key",
+          "status": "available",
+          "error": "",
+          "attributes": [
+            "sender_id"
+          ],
+          "lengths": [
+            0
+          ],
+          "orders": [
+            "ASC"
+          ]
+        },
+        {
+          "$id": "1_6_key_msg_id",
+          "$createdAt": "2026-03-31T13:24:49.252+00:00",
+          "$updatedAt": "2026-03-31T13:24:49.267+00:00",
+          "key": "key_msg_id",
+          "type": "unique",
+          "status": "available",
+          "error": "",
+          "attributes": [
+            "triggered_by_msg_id"
+          ],
+          "lengths": [
+            0
+          ],
+          "orders": [
+            "ASC"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "conversation_summaries",
+      "id": "conversation_summaries",
+      "attributes": [
+        {
+          "key": "summary_content",
+          "type": "string",
+          "status": "available",
+          "error": "",
+          "required": true,
+          "array": false,
+          "$createdAt": "2026-05-13T06:58:58.743+00:00",
+          "$updatedAt": "2026-05-13T07:02:43.096+00:00",
+          "size": 5000,
+          "default": null,
+          "encrypt": false
+        },
+        {
+          "key": "last_processed_msg_id",
+          "type": "string",
+          "status": "available",
+          "error": "",
+          "required": false,
+          "array": false,
+          "$createdAt": "2026-05-13T07:01:18.286+00:00",
+          "$updatedAt": "2026-05-13T07:01:18.306+00:00",
+          "size": 50,
+          "default": null,
+          "encrypt": false
+        },
+        {
+          "key": "conversation_id",
+          "type": "string",
+          "status": "available",
+          "error": "",
+          "required": true,
+          "array": false,
+          "$createdAt": "2026-05-13T07:02:12.191+00:00",
+          "$updatedAt": "2026-05-13T07:02:12.209+00:00",
+          "size": 50,
+          "default": null,
+          "encrypt": false
+        },
+        {
+          "key": "msg_count_snapshot",
+          "type": "integer",
+          "status": "available",
+          "error": "",
+          "required": true,
+          "array": false,
+          "$createdAt": "2026-05-13T07:05:37.709+00:00",
+          "$updatedAt": "2026-05-13T07:05:37.728+00:00",
+          "min": -9223372036854775808,
+          "max": 9223372036854775807,
+          "default": null
+        },
+        {
+          "key": "updated_at",
+          "type": "datetime",
+          "status": "available",
+          "error": "",
+          "required": true,
+          "array": false,
+          "$createdAt": "2026-05-13T07:07:15.235+00:00",
+          "$updatedAt": "2026-05-13T07:07:15.254+00:00",
+          "format": "",
+          "default": null
+        },
+        {
+          "key": "version",
+          "type": "integer",
+          "status": "available",
+          "error": "",
+          "required": false,
+          "array": false,
+          "$createdAt": "2026-05-13T07:34:34.476+00:00",
+          "$updatedAt": "2026-05-13T07:34:34.496+00:00",
+          "min": -9223372036854775808,
+          "max": 9223372036854775807,
+          "default": null
+        },
+        {
+          "key": "intimacy_level",
+          "type": "double",
+          "status": "available",
+          "error": "",
+          "required": false,
+          "array": false,
+          "$createdAt": "2026-05-13T07:35:05.018+00:00",
+          "$updatedAt": "2026-05-13T07:35:05.036+00:00",
+          "min": 0,
+          "max": 1,
+          "default": null
+        },
+        {
+          "key": "main_topics",
+          "type": "string",
+          "status": "available",
+          "error": "",
+          "required": false,
+          "array": false,
+          "$createdAt": "2026-05-13T07:35:33.584+00:00",
+          "$updatedAt": "2026-05-13T07:35:33.602+00:00",
+          "size": 1000,
+          "default": null,
+          "encrypt": false
+        },
+        {
+          "key": "tone_shift",
+          "type": "string",
+          "status": "available",
+          "error": "",
+          "required": false,
+          "array": false,
+          "$createdAt": "2026-05-13T07:36:41.981+00:00",
+          "$updatedAt": "2026-05-13T07:36:42.001+00:00",
+          "size": 100,
+          "default": null,
+          "encrypt": false
+        },
+        {
+          "key": "first_processed_msg_id",
+          "type": "string",
+          "status": "available",
+          "error": "",
+          "required": false,
+          "array": false,
+          "$createdAt": "2026-05-15T09:28:36.798+00:00",
+          "$updatedAt": "2026-05-15T09:28:36.814+00:00",
+          "size": 50,
+          "default": null,
+          "encrypt": false
+        },
+        {
+          "key": "conversation_summaries_reasoning",
+          "type": "string",
+          "status": "available",
+          "error": "",
+          "required": false,
+          "array": false,
+          "$createdAt": "2026-05-17T14:30:04.381+00:00",
+          "$updatedAt": "2026-05-17T14:30:04.410+00:00",
+          "size": 5000,
+          "default": null,
+          "encrypt": false
+        },
+        {
+          "key": "self_disclosure_depth",
+          "type": "double",
+          "status": "available",
+          "error": "",
+          "required": false,
+          "array": false,
+          "$createdAt": "2026-05-18T13:25:03.973+00:00",
+          "$updatedAt": "2026-05-18T13:25:03.987+00:00",
+          "min": 0,
+          "max": 1,
+          "default": 0
+        },
+        {
+          "key": "emotional_intensity",
+          "type": "double",
+          "status": "available",
+          "error": "",
+          "required": false,
+          "array": false,
+          "$createdAt": "2026-05-18T13:25:23.007+00:00",
+          "$updatedAt": "2026-05-18T13:25:23.027+00:00",
+          "min": 0,
+          "max": 1,
+          "default": 0
+        },
+        {
+          "key": "exclusivity_framing",
+          "type": "double",
+          "status": "available",
+          "error": "",
+          "required": false,
+          "array": false,
+          "$createdAt": "2026-05-18T13:25:38.380+00:00",
+          "$updatedAt": "2026-05-18T13:25:38.396+00:00",
+          "min": 0,
+          "max": 1,
+          "default": 0
+        },
+        {
+          "key": "physical_intimacy_reference",
+          "type": "double",
+          "status": "available",
+          "error": "",
+          "required": false,
+          "array": false,
+          "$createdAt": "2026-05-18T13:25:56.610+00:00",
+          "$updatedAt": "2026-05-18T13:25:56.629+00:00",
+          "min": 0,
+          "max": 1,
+          "default": 0
+        }
+      ],
+      "indexes": [
+        {
+          "$id": "1_7_key_conversation_id",
+          "$createdAt": "2026-05-14T05:22:54.854+00:00",
+          "$updatedAt": "2026-05-14T05:22:54.900+00:00",
+          "key": "key_conversation_id",
+          "type": "key",
+          "status": "available",
+          "error": "",
+          "attributes": [
+            "conversation_id"
+          ],
+          "lengths": [
+            0
+          ],
+          "orders": [
+            "ASC"
+          ]
+        },
+        {
+          "$id": "1_7_key_conv_version",
+          "$createdAt": "2026-05-17T12:00:22.242+00:00",
+          "$updatedAt": "2026-05-17T12:00:22.262+00:00",
+          "key": "key_conv_version",
+          "type": "key",
+          "status": "available",
+          "error": "",
+          "attributes": [
+            "conversation_id",
+            "version"
+          ],
+          "lengths": [
+            0,
+            0
+          ],
+          "orders": [
+            "ASC",
+            "DESC"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "relationship_metrics",
+      "id": "relationship_metrics",
+      "attributes": [
+        {
+          "key": "conversation_id",
+          "type": "string",
+          "status": "available",
+          "error": "",
+          "required": true,
+          "array": false,
+          "$createdAt": "2026-05-13T07:49:58.989+00:00",
+          "$updatedAt": "2026-05-13T07:49:59.005+00:00",
+          "size": 50,
+          "default": null,
+          "encrypt": false
+        },
+        {
+          "key": "user_a_id",
+          "type": "string",
+          "status": "available",
+          "error": "",
+          "required": true,
+          "array": false,
+          "$createdAt": "2026-05-13T07:51:25.531+00:00",
+          "$updatedAt": "2026-05-13T07:51:25.549+00:00",
+          "size": 50,
+          "default": null,
+          "encrypt": false
+        },
+        {
+          "key": "user_b_id",
+          "type": "string",
+          "status": "available",
+          "error": "",
+          "required": true,
+          "array": false,
+          "$createdAt": "2026-05-14T05:14:27.319+00:00",
+          "$updatedAt": "2026-05-14T05:14:27.336+00:00",
+          "size": 50,
+          "default": null,
+          "encrypt": false
+        },
+        {
+          "key": "total_messages",
+          "type": "integer",
+          "status": "available",
+          "error": "",
+          "required": false,
+          "array": false,
+          "$createdAt": "2026-05-14T05:17:10.368+00:00",
+          "$updatedAt": "2026-05-14T05:17:10.384+00:00",
+          "min": -9223372036854775808,
+          "max": 9223372036854775807,
+          "default": null
+        },
+        {
+          "key": "familiarity_score",
+          "type": "double",
+          "status": "available",
+          "error": "",
+          "required": false,
+          "array": false,
+          "$createdAt": "2026-05-14T05:17:52.477+00:00",
+          "$updatedAt": "2026-05-14T05:18:21.039+00:00",
+          "min": 0,
+          "max": 1,
+          "default": 0
+        },
+        {
+          "key": "conversation_balance",
+          "type": "double",
+          "status": "available",
+          "error": "",
+          "required": false,
+          "array": false,
+          "$createdAt": "2026-05-14T05:18:59.842+00:00",
+          "$updatedAt": "2026-05-14T05:18:59.859+00:00",
+          "min": 0,
+          "max": 1,
+          "default": 0.5
+        },
+        {
+          "key": "first_contact_at",
+          "type": "datetime",
+          "status": "available",
+          "error": "",
+          "required": true,
+          "array": false,
+          "$createdAt": "2026-05-14T05:19:18.717+00:00",
+          "$updatedAt": "2026-05-14T05:19:18.737+00:00",
+          "format": "",
+          "default": null
+        },
+        {
+          "key": "last_contact_at",
+          "type": "datetime",
+          "status": "available",
+          "error": "",
+          "required": false,
+          "array": false,
+          "$createdAt": "2026-05-14T05:19:49.314+00:00",
+          "$updatedAt": "2026-05-14T05:19:49.332+00:00",
+          "format": "",
+          "default": null
+        },
+        {
+          "key": "interaction_days",
+          "type": "integer",
+          "status": "available",
+          "error": "",
+          "required": false,
+          "array": false,
+          "$createdAt": "2026-05-14T05:28:59.186+00:00",
+          "$updatedAt": "2026-05-14T05:28:59.204+00:00",
+          "min": -9223372036854775808,
+          "max": 9223372036854775807,
+          "default": 1
+        },
+        {
+          "key": "intimacy_progression_rate",
+          "type": "double",
+          "status": "available",
+          "error": "",
+          "required": false,
+          "array": false,
+          "$createdAt": "2026-05-17T12:04:14.779+00:00",
+          "$updatedAt": "2026-05-17T12:04:14.798+00:00",
+          "min": -1,
+          "max": 1,
+          "default": 0
+        },
+        {
+          "key": "user_a_message_count",
+          "type": "integer",
+          "status": "available",
+          "error": "",
+          "required": false,
+          "array": false,
+          "$createdAt": "2026-05-18T13:26:56.822+00:00",
+          "$updatedAt": "2026-05-18T13:26:56.840+00:00",
+          "min": -9223372036854775808,
+          "max": 9223372036854775807,
+          "default": 0
+        },
+        {
+          "key": "user_b_message_count",
+          "type": "integer",
+          "status": "available",
+          "error": "",
+          "required": false,
+          "array": false,
+          "$createdAt": "2026-05-18T13:27:09.018+00:00",
+          "$updatedAt": "2026-05-18T13:27:09.031+00:00",
+          "min": -9223372036854775808,
+          "max": 9223372036854775807,
+          "default": 0
+        },
+        {
+          "key": "updated_at",
+          "type": "datetime",
+          "status": "available",
+          "error": "",
+          "required": false,
+          "array": false,
+          "$createdAt": "2026-05-18T13:27:41.685+00:00",
+          "$updatedAt": "2026-05-18T13:27:41.703+00:00",
+          "format": "",
+          "default": null
+        }
+      ],
+      "indexes": [
+        {
+          "$id": "1_8_key_conversation_id",
+          "$createdAt": "2026-05-14T05:21:56.314+00:00",
+          "$updatedAt": "2026-05-14T05:21:56.331+00:00",
+          "key": "key_conversation_id",
+          "type": "unique",
+          "status": "available",
+          "error": "",
+          "attributes": [
+            "conversation_id"
+          ],
+          "lengths": [
+            0
+          ],
+          "orders": [
+            "ASC"
+          ]
+        },
+        {
+          "$id": "1_8_key_user_a",
+          "$createdAt": "2026-05-14T05:23:30.284+00:00",
+          "$updatedAt": "2026-05-14T05:23:30.300+00:00",
+          "key": "key_user_a",
+          "type": "key",
+          "status": "available",
+          "error": "",
+          "attributes": [
+            "user_a_id"
+          ],
+          "lengths": [
+            0
+          ],
+          "orders": [
+            "ASC"
+          ]
+        },
+        {
+          "$id": "1_8_key_user_b",
+          "$createdAt": "2026-05-14T05:23:46.352+00:00",
+          "$updatedAt": "2026-05-14T05:23:46.369+00:00",
+          "key": "key_user_b",
+          "type": "key",
+          "status": "available",
+          "error": "",
+          "attributes": [
+            "user_b_id"
+          ],
+          "lengths": [
+            0
+          ],
+          "orders": [
+            "ASC"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "guardrail_context_reviews",
+      "id": "guardrail_context_reviews",
+      "attributes": [
+        {
+          "key": "conversation_id",
+          "type": "string",
+          "status": "available",
+          "error": "",
+          "required": true,
+          "array": false,
+          "$createdAt": "2026-05-29T16:40:43.003+00:00",
+          "$updatedAt": "2026-05-29T16:40:43.019+00:00",
+          "size": 50,
+          "default": null,
+          "encrypt": false
+        },
+        {
+          "key": "sender_id",
+          "type": "string",
+          "status": "available",
+          "error": "",
+          "required": true,
+          "array": false,
+          "$createdAt": "2026-05-29T16:40:58.287+00:00",
+          "$updatedAt": "2026-05-29T16:40:58.303+00:00",
+          "size": 50,
+          "default": null,
+          "encrypt": false
+        },
+        {
+          "key": "triggered_by_msg_id",
+          "type": "string",
+          "status": "available",
+          "error": "",
+          "required": true,
+          "array": false,
+          "$createdAt": "2026-05-29T16:41:14.813+00:00",
+          "$updatedAt": "2026-05-29T16:41:14.829+00:00",
+          "size": 50,
+          "default": null,
+          "encrypt": false
+        },
+        {
+          "key": "flagged_words",
+          "type": "string",
+          "status": "available",
+          "error": "",
+          "required": false,
+          "array": false,
+          "$createdAt": "2026-05-29T16:41:31.099+00:00",
+          "$updatedAt": "2026-05-29T16:41:31.116+00:00",
+          "size": 500,
+          "default": null,
+          "encrypt": false
+        },
+        {
+          "key": "classifier_flag",
+          "type": "string",
+          "status": "available",
+          "error": "",
+          "required": false,
+          "array": false,
+          "$createdAt": "2026-05-29T16:41:41.587+00:00",
+          "$updatedAt": "2026-05-29T16:41:41.603+00:00",
+          "size": 200,
+          "default": null,
+          "encrypt": false
+        },
+        {
+          "key": "judgment",
+          "type": "string",
+          "status": "available",
+          "error": "",
+          "required": true,
+          "array": false,
+          "$createdAt": "2026-05-29T16:41:59.416+00:00",
+          "$updatedAt": "2026-05-29T16:41:59.432+00:00",
+          "size": 20,
+          "default": null,
+          "encrypt": false
+        },
+        {
+          "key": "reasoning",
+          "type": "string",
+          "status": "available",
+          "error": "",
+          "required": false,
+          "array": false,
+          "$createdAt": "2026-05-29T16:42:10.434+00:00",
+          "$updatedAt": "2026-05-29T16:42:10.451+00:00",
+          "size": 1000,
+          "default": null,
+          "encrypt": false
+        },
+        {
+          "key": "model",
+          "type": "string",
+          "status": "available",
+          "error": "",
+          "required": false,
+          "array": false,
+          "$createdAt": "2026-05-29T16:42:25.010+00:00",
+          "$updatedAt": "2026-05-29T16:42:25.027+00:00",
+          "size": 80,
+          "default": null,
+          "encrypt": false
+        },
+        {
+          "key": "timestamp",
+          "type": "datetime",
+          "status": "available",
+          "error": "",
+          "required": true,
+          "array": false,
+          "$createdAt": "2026-05-29T16:42:39.835+00:00",
+          "$updatedAt": "2026-05-29T16:42:39.851+00:00",
+          "format": "",
+          "default": null
+        }
+      ],
+      "indexes": [
+        {
+          "$id": "1_9_key_conv_sender_time",
+          "$createdAt": "2026-05-29T16:44:10.867+00:00",
+          "$updatedAt": "2026-05-29T16:44:10.881+00:00",
+          "key": "key_conv_sender_time",
+          "type": "key",
+          "status": "available",
+          "error": "",
+          "attributes": [
+            "conversation_id",
+            "sender_id",
+            "timestamp"
+          ],
+          "lengths": [
+            0,
+            0,
+            0
+          ],
+          "orders": [
+            "ASC",
+            "ASC",
+            "DESC"
+          ]
+        },
+        {
+          "$id": "1_9_key_msg_id",
+          "$createdAt": "2026-05-29T16:44:27.622+00:00",
+          "$updatedAt": "2026-05-29T16:44:27.638+00:00",
+          "key": "key_msg_id",
+          "type": "key",
+          "status": "available",
+          "error": "",
+          "attributes": [
+            "triggered_by_msg_id"
+          ],
+          "lengths": [
+            0
+          ],
+          "orders": [
+            "ASC"
+          ]
+        },
+        {
+          "$id": "1_9_key_judgment_time",
+          "$createdAt": "2026-05-29T16:44:45.110+00:00",
+          "$updatedAt": "2026-05-29T16:44:45.125+00:00",
+          "key": "key_judgment_time",
+          "type": "key",
+          "status": "available",
+          "error": "",
+          "attributes": [
+            "judgment",
+            "timestamp"
+          ],
+          "lengths": [
+            0,
+            0
+          ],
+          "orders": [
+            "ASC",
+            "DESC"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "user_blocks",
+      "id": "user_blocks",
+      "attributes": [
+        {
+          "key": "blocker_id",
+          "type": "string",
+          "status": "available",
+          "error": "",
+          "required": true,
+          "array": false,
+          "$createdAt": "2026-08-31T12:41:11.225+00:00",
+          "$updatedAt": "2026-08-31T12:41:11.360+00:00",
+          "size": 50,
+          "default": null,
+          "encrypt": false
+        },
+        {
+          "key": "blocked_id",
+          "type": "string",
+          "status": "available",
+          "error": "",
+          "required": true,
+          "array": false,
+          "$createdAt": "2026-08-31T12:41:11.250+00:00",
+          "$updatedAt": "2026-08-31T12:41:11.369+00:00",
+          "size": 50,
+          "default": null,
+          "encrypt": false
+        },
+        {
+          "key": "conversation_id",
+          "type": "string",
+          "status": "available",
+          "error": "",
+          "required": false,
+          "array": false,
+          "$createdAt": "2026-08-31T12:41:11.267+00:00",
+          "$updatedAt": "2026-08-31T12:41:11.375+00:00",
+          "size": 50,
+          "default": null,
+          "encrypt": false
+        },
+        {
+          "key": "source",
+          "type": "string",
+          "status": "available",
+          "error": "",
+          "required": false,
+          "array": false,
+          "$createdAt": "2026-08-31T12:41:11.273+00:00",
+          "$updatedAt": "2026-08-31T12:41:11.382+00:00",
+          "size": 20,
+          "default": null,
+          "encrypt": false
+        },
+        {
+          "key": "created_at",
+          "type": "datetime",
+          "status": "available",
+          "error": "",
+          "required": false,
+          "array": false,
+          "$createdAt": "2026-08-31T12:41:11.284+00:00",
+          "$updatedAt": "2026-08-31T12:41:11.388+00:00",
+          "format": "",
+          "default": null
+        }
+      ],
+      "indexes": [
+        {
+          "$id": "1_10_idx_blocker",
+          "$createdAt": "2026-08-31T12:41:13.322+00:00",
+          "$updatedAt": "2026-08-31T12:41:13.338+00:00",
+          "key": "idx_blocker",
+          "type": "key",
+          "status": "available",
+          "error": "",
+          "attributes": [
+            "blocker_id"
+          ],
+          "lengths": [
+            0
+          ],
+          "orders": [
+            "ASC"
+          ]
+        },
+        {
+          "$id": "1_10_idx_blocked",
+          "$createdAt": "2026-08-31T12:41:13.334+00:00",
+          "$updatedAt": "2026-08-31T12:41:13.349+00:00",
+          "key": "idx_blocked",
+          "type": "key",
+          "status": "available",
+          "error": "",
+          "attributes": [
+            "blocked_id"
+          ],
+          "lengths": [
+            0
+          ],
+          "orders": [
+            "ASC"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "user_reports",
+      "id": "user_reports",
+      "attributes": [
+        {
+          "key": "reporter_id",
+          "type": "string",
+          "status": "available",
+          "error": "",
+          "required": true,
+          "array": false,
+          "$createdAt": "2026-08-31T12:41:13.368+00:00",
+          "$updatedAt": "2026-08-31T12:41:13.378+00:00",
+          "size": 50,
+          "default": null,
+          "encrypt": false
+        },
+        {
+          "key": "reported_id",
+          "type": "string",
+          "status": "available",
+          "error": "",
+          "required": true,
+          "array": false,
+          "$createdAt": "2026-08-31T12:41:13.375+00:00",
+          "$updatedAt": "2026-08-31T12:41:13.386+00:00",
+          "size": 50,
+          "default": null,
+          "encrypt": false
+        },
+        {
+          "key": "conversation_id",
+          "type": "string",
+          "status": "available",
+          "error": "",
+          "required": false,
+          "array": false,
+          "$createdAt": "2026-08-31T12:41:13.384+00:00",
+          "$updatedAt": "2026-08-31T12:41:13.395+00:00",
+          "size": 50,
+          "default": null,
+          "encrypt": false
+        },
+        {
+          "key": "reason_category",
+          "type": "string",
+          "status": "available",
+          "error": "",
+          "required": true,
+          "array": false,
+          "$createdAt": "2026-08-31T12:41:13.391+00:00",
+          "$updatedAt": "2026-08-31T12:41:13.403+00:00",
+          "size": 30,
+          "default": null,
+          "encrypt": false
+        },
+        {
+          "key": "detail_text",
+          "type": "string",
+          "status": "available",
+          "error": "",
+          "required": false,
+          "array": false,
+          "$createdAt": "2026-08-31T12:41:13.397+00:00",
+          "$updatedAt": "2026-08-31T12:41:13.410+00:00",
+          "size": 2000,
+          "default": null,
+          "encrypt": false
+        },
+        {
+          "key": "triggered_by_msg_id",
+          "type": "string",
+          "status": "available",
+          "error": "",
+          "required": false,
+          "array": false,
+          "$createdAt": "2026-08-31T12:41:13.405+00:00",
+          "$updatedAt": "2026-08-31T12:41:13.418+00:00",
+          "size": 50,
+          "default": null,
+          "encrypt": false
+        },
+        {
+          "key": "status",
+          "type": "string",
+          "status": "available",
+          "error": "",
+          "required": false,
+          "array": false,
+          "$createdAt": "2026-08-31T12:41:13.413+00:00",
+          "$updatedAt": "2026-08-31T12:41:13.426+00:00",
+          "size": 20,
+          "default": null,
+          "encrypt": false
+        },
+        {
+          "key": "created_at",
+          "type": "datetime",
+          "status": "available",
+          "error": "",
+          "required": false,
+          "array": false,
+          "$createdAt": "2026-08-31T12:41:13.419+00:00",
+          "$updatedAt": "2026-08-31T12:41:13.434+00:00",
+          "format": "",
+          "default": null
+        }
+      ],
+      "indexes": [
+        {
+          "$id": "1_11_idx_reported",
+          "$createdAt": "2026-08-31T12:41:15.446+00:00",
+          "$updatedAt": "2026-08-31T12:41:15.457+00:00",
+          "key": "idx_reported",
+          "type": "key",
+          "status": "available",
+          "error": "",
+          "attributes": [
+            "reported_id"
+          ],
+          "lengths": [
+            0
+          ],
+          "orders": [
+            "ASC"
+          ]
+        },
+        {
+          "$id": "1_11_idx_status",
+          "$createdAt": "2026-08-31T12:41:15.454+00:00",
+          "$updatedAt": "2026-08-31T12:41:15.467+00:00",
+          "key": "idx_status",
+          "type": "key",
+          "status": "available",
+          "error": "",
+          "attributes": [
+            "status"
+          ],
+          "lengths": [
+            0
+          ],
+          "orders": [
+            "ASC"
+          ]
+        }
+      ]
+    }
+  ]
+}
