@@ -96,6 +96,21 @@ Step 8 不直接平均五個維度，而是同時考量最嚴重維度的**最�
 
 收件方不會看到風險分數，也不會因系統介入而被跳窗阻擋操作；系統保留是否封鎖、檢舉或繼續互動的決定權給使用者。
 
+## 實機介入展示
+
+下列畫面取自同一段連續對話，左側為寄件方、右側為收件方。點擊圖片可查看原始清晰版本；另見[完整系統介面與安全介入圖庫](docs/interface-gallery.md)。
+
+<table>
+  <tr>
+    <td align="center"><a href="assets/screenshots/intervention/observation.png"><img src="assets/screenshots/intervention/observation.png" alt="觀察級介入畫面"></a><br><b>觀察級</b>：收件方環境提醒</td>
+    <td align="center"><a href="assets/screenshots/intervention/warning.png"><img src="assets/screenshots/intervention/warning.png" alt="警告級介入畫面"></a><br><b>警告級</b>：反思提示與保護卡片</td>
+  </tr>
+  <tr>
+    <td align="center"><a href="assets/screenshots/intervention/restricted.png"><img src="assets/screenshots/intervention/restricted.png" alt="限制級介入畫面"></a><br><b>限制級</b>：暫停發言與行動選項</td>
+    <td align="center"><a href="assets/screenshots/intervention/blocked.png"><img src="assets/screenshots/intervention/blocked.png" alt="封鎖級介入畫面"></a><br><b>封鎖級</b>：攔截訊息與保護選項</td>
+  </tr>
+</table>
+
 ---
 
 ## 目錄結構
@@ -111,7 +126,7 @@ evaluation/             評估程式與觸發校準腳本
 integration/            與聊天主伺服器的串接層
 db/                     知識庫種子（提示詞、規則、介入模板、禁詞）與判斷紀錄的資料結構
 docs/                   規格與缺陷紀錄
-assets/                 現行架構圖與原計畫書提案架構圖
+assets/                 架構圖與原始實機截圖
 ```
 
 **參數與內容都存在資料庫，不寫死在程式裡。** 每一個門檻、權重、衰退係數、節流窗、16 條情境規則、行為規則與特徵、各等級的介入文案與介面行為、乃至角色圖像的指定，全部存於知識庫，調整時不需要改動程式。
@@ -125,6 +140,7 @@ assets/                 現行架構圖與原計畫書提案架構圖
 - [案例池設計](docs/case-pool-design.md)：正負例、涵蓋檢核及各層可觀測欄位。
 - [使用者層排序評估](docs/user-ranking-design.md)：以整段互動而非單則訊息檢驗風險累積效果。
 - [已知限制與設計決策](docs/known-issues.md)：問題成因、影響、處理狀態與刻意保留的設計取捨。
+- [系統介面與安全介入圖庫](docs/interface-gallery.md)：四級介入、已處置豁免及團隊系統介面原圖。
 
 ---
 
