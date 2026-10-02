@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1540" height="1000" viewBox="0 0 1540 1000" font-family="'Noto Sans TC','PingFang TC','Heiti TC','Microsoft JhengHei',sans-serif">
+  <defs>
+    <marker id="ap" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#6B46C1"/>
+    </marker>
+    <marker id="ao" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#D9732B"/>
+    </marker>
+    <marker id="ab" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2563EB"/>
+    </marker>
+  </defs>
+
+  <rect width="1540" height="1000" fill="#FFFFFF"/>
+
+  <text x="40" y="36" font-size="21" font-weight="700" fill="#1E293B">團隊系統概覽</text>
+  <text x="40" y="59" font-size="12.5" fill="#64748B">橘色為本倉庫涵蓋的範圍。其餘為團隊其他成員開發，本倉庫不含其程式碼。服務間以 HTTP API 溝通。</text>
+
+  <!-- ===== Tier A: client ===== -->
+  <rect x="40" y="80" width="1460" height="118" rx="10" fill="#F5F3FF" stroke="#6B46C1" stroke-width="2"/>
+  <text x="62" y="107" font-size="15.5" font-weight="700" fill="#5B35A8">用戶端　Flutter 跨平台</text>
+  <text x="62" y="130" font-size="12" fill="#334155">以與代理人對話為操作中樞，非左滑右滑介面</text>
+
+  <rect x="62" y="142" width="1046" height="42" rx="5" fill="#FFFFFF" stroke="#A78BDA" stroke-width="1.2"/>
+  <text x="76" y="168" font-size="12" fill="#334155">登入註冊　個人檔案　配對與邀請卡　聊天室　阿月對話與私下諮詢　約會與行事曆　社群貼文　設定</text>
+
+  <rect x="1120" y="142" width="358" height="42" rx="5" fill="#FFF4EA" stroke="#D9732B" stroke-width="1.6"/>
+  <text x="1134" y="168" font-size="12" fill="#334155">安全介入卡片　封鎖　檢舉　申訴　回饋</text>
+
+  <path d="M 770 198 L 770 252" stroke="#6B46C1" stroke-width="2.2" fill="none" marker-end="url(#ap)"/>
+  <text x="784" y="228" font-size="11.5" fill="#5B35A8">HTTP API</text>
+
+  <!-- ===== Tier B: four services ===== -->
+  <rect x="40" y="254" width="1460" height="236" rx="10" fill="#FAFAFE" stroke="#6B46C1" stroke-width="2"/>
+  <text x="62" y="281" font-size="15.5" font-weight="700" fill="#5B35A8">後端服務　Python FastAPI</text>
+
+  <rect x="62" y="294" width="338" height="180" rx="7" fill="#FFFFFF" stroke="#A78BDA" stroke-width="1.5"/>
+  <text x="80" y="320" font-size="13.5" font-weight="700" fill="#5B35A8">主服務</text>
+  <text x="80" y="344" font-size="11.5" fill="#475569">帳號與工作階段</text>
+  <text x="80" y="364" font-size="11.5" fill="#475569">訊息收發與持久化</text>
+  <text x="80" y="384" font-size="11.5" fill="#475569">聯絡人與聊天列表</text>
+  <text x="80" y="404" font-size="11.5" fill="#475569">推播與通知</text>
+  <text x="80" y="424" font-size="11.5" fill="#475569">社群貼文</text>
+  <text x="80" y="456" font-size="11" fill="#94A3B8">用戶端訊息收發的入口</text>
+
+  <rect x="418" y="294" width="338" height="180" rx="7" fill="#FFFFFF" stroke="#A78BDA" stroke-width="1.5"/>
+  <text x="436" y="320" font-size="13.5" font-weight="700" fill="#5B35A8">AI 媒人（阿月）</text>
+  <text x="436" y="344" font-size="11.5" fill="#475569">自然對話理解性格與感受</text>
+  <text x="436" y="364" font-size="11.5" fill="#475569">破冰協助與回覆建議</text>
+  <text x="436" y="384" font-size="11.5" fill="#475569">約會行程提案與共同編輯</text>
+  <text x="436" y="404" font-size="11.5" fill="#475569">關係測驗與引導</text>
+  <text x="436" y="424" font-size="11.5" fill="#475569">短期情境與長期記憶</text>
+  <text x="436" y="456" font-size="11" fill="#94A3B8">共同記憶限定於該對話，不外溢</text>
+
+  <rect x="774" y="294" width="338" height="180" rx="7" fill="#FFFFFF" stroke="#A78BDA" stroke-width="1.5"/>
+  <text x="792" y="320" font-size="13.5" font-weight="700" fill="#5B35A8">配對服務</text>
+  <text x="792" y="344" font-size="11.5" fill="#475569">三種配對入口統一產生邀請卡</text>
+  <text x="792" y="364" font-size="11.5" fill="#475569">情境向量相似度</text>
+  <text x="792" y="384" font-size="11.5" fill="#475569">共同偏好與地雷扣分</text>
+  <text x="792" y="404" font-size="11.5" fill="#475569">價值觀交集與人格距離</text>
+  <text x="792" y="424" font-size="11.5" fill="#475569">推薦理由綁定證據來源</text>
+  <text x="792" y="456" font-size="11" fill="#94A3B8">標示已確認共同點或探索型推薦</text>
+
+  <rect x="1130" y="294" width="348" height="180" rx="7" fill="#FFF4EA" stroke="#D9732B" stroke-width="2.4"/>
+  <text x="1148" y="320" font-size="13.5" font-weight="700" fill="#A8541A">風險偵測服務（本倉庫）</text>
+  <text x="1148" y="344" font-size="11.5" fill="#475569">Step 0 至 Step 9 判斷主線</text>
+  <text x="1148" y="364" font-size="11.5" fill="#475569">Step 0.5 非同步背景判斷</text>
+  <text x="1148" y="384" font-size="11.5" fill="#475569">風險為累積與衰退的狀態</text>
+  <text x="1148" y="404" font-size="11.5" fill="#475569">五維度評分與五級分級</text>
+  <text x="1148" y="424" font-size="11.5" fill="#475569">寄件方與收件方非對稱介入</text>
+  <text x="1148" y="456" font-size="11" fill="#A8541A">由主服務同步呼叫，失敗則放行</text>
+
+  <path d="M 500 490 L 500 548" stroke="#2563EB" stroke-width="2" fill="none" marker-end="url(#ab)" stroke-dasharray="6 4"/>
+  <path d="M 1300 490 L 1300 548" stroke="#2563EB" stroke-width="2" fill="none" marker-end="url(#ab)" stroke-dasharray="6 4"/>
+
+  <!-- ===== Tier C: data ===== -->
+  <rect x="40" y="550" width="1460" height="214" rx="10" fill="#F8FAFC" stroke="#2563EB" stroke-width="1.8"/>
+  <text x="62" y="577" font-size="15.5" font-weight="700" fill="#1D4ED8">資料層</text>
+
+  <rect x="62" y="590" width="348" height="158" rx="7" fill="#FFFFFF" stroke="#93C5FD" stroke-width="1.4"/>
+  <text x="80" y="616" font-size="13.5" font-weight="700" fill="#1D4ED8">MongoDB</text>
+  <text x="80" y="640" font-size="11.5" fill="#475569">使用者側寫</text>
+  <text x="80" y="660" font-size="11.5" fill="#475569">配對結果</text>
+  <text x="80" y="680" font-size="11.5" fill="#475569">訊息</text>
+  <text x="80" y="700" font-size="11.5" fill="#475569">行事曆</text>
+  <text x="80" y="730" font-size="11" fill="#94A3B8">以其向量檢索支援情境比對</text>
+
+  <rect x="428" y="590" width="330" height="158" rx="7" fill="#FFFFFF" stroke="#93C5FD" stroke-width="1.4"/>
+  <text x="446" y="616" font-size="13.5" font-weight="700" fill="#1D4ED8">Neo4j</text>
+  <text x="446" y="640" font-size="11.5" fill="#475569">概念與使用者知識圖譜</text>
+  <text x="446" y="660" font-size="11.5" fill="#475569">偏好與地雷關係</text>
+  <text x="446" y="680" font-size="11.5" fill="#475569">配對全域法則</text>
+  <text x="446" y="730" font-size="11" fill="#94A3B8">含原生向量索引</text>
+
+  <rect x="776" y="590" width="348" height="158" rx="7" fill="#FFFFFF" stroke="#93C5FD" stroke-width="1.4"/>
+  <text x="794" y="616" font-size="13.5" font-weight="700" fill="#1D4ED8">Appwrite</text>
+  <text x="794" y="640" font-size="11.5" fill="#475569">帳號登入與工作階段</text>
+  <text x="794" y="660" font-size="11.5" fill="#475569">照片與檔案儲存</text>
+  <text x="794" y="680" font-size="11.5" fill="#475569">聊天室即時推送</text>
+  <text x="794" y="700" font-size="11.5" fill="#A8541A">對話紀錄與判斷紀錄</text>
+  <text x="794" y="730" font-size="11.5" fill="#A8541A">風險知識庫（部署版）</text>
+
+  <rect x="1142" y="590" width="336" height="158" rx="7" fill="#FFF4EA" stroke="#D9732B" stroke-width="1.8"/>
+  <text x="1160" y="616" font-size="13.5" font-weight="700" fill="#A8541A">MySQL（本倉庫）</text>
+  <text x="1160" y="640" font-size="11.5" fill="#475569">特徵清單　行為規則</text>
+  <text x="1160" y="660" font-size="11.5" fill="#475569">情境規則　閾值設定</text>
+  <text x="1160" y="680" font-size="11.5" fill="#475569">提示詞　介入模板　禁詞</text>
+  <text x="1160" y="716" font-size="11" fill="#A8541A">風險模組本機開發版的知識庫</text>
+  <text x="1160" y="734" font-size="11" fill="#A8541A">與部署版結構相同，載體不同</text>
+
+  <text x="62" y="757" font-size="11" fill="#94A3B8">風險服務不讀寫 MongoDB 與 Neo4j。</text>
+
+  <!-- ===== Tier D: models ===== -->
+  <rect x="40" y="800" width="1460" height="176" rx="10" fill="#F8FAFC" stroke="#64748B" stroke-width="1.8"/>
+  <text x="62" y="827" font-size="15.5" font-weight="700" fill="#334155">語言模型層　由各後端服務呼叫</text>
+
+  <rect x="62" y="840" width="462" height="118" rx="7" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.4"/>
+  <text x="80" y="866" font-size="13" font-weight="700" fill="#334155">DeepSeek（經 Ollama Cloud）</text>
+  <text x="80" y="890" font-size="11.5" fill="#475569">主對話</text>
+  <text x="80" y="910" font-size="11.5" fill="#475569">配對推薦與理由生成</text>
+
+  <rect x="542" y="840" width="462" height="118" rx="7" fill="#FFF4EA" stroke="#D9732B" stroke-width="1.6"/>
+  <text x="560" y="866" font-size="13" font-weight="700" fill="#A8541A">Google Gemini</text>
+  <text x="560" y="890" font-size="11.5" fill="#475569">語意風險分析（五維度評分與信心）</text>
+  <text x="560" y="910" font-size="11.5" fill="#475569">對話摘要</text>
+  <text x="560" y="932" font-size="10.5" fill="#94A3B8">供應商與模型以環境變數切換</text>
+
+  <rect x="1022" y="840" width="456" height="118" rx="7" fill="#FFF4EA" stroke="#D9732B" stroke-width="1.6"/>
+  <text x="1040" y="866" font-size="13" font-weight="700" fill="#A8541A">Llama Guard 3（本機推論）</text>
+  <text x="1040" y="890" font-size="11.5" fill="#475569">Guardrail 內容安全分類</text>
+  <text x="1040" y="910" font-size="11.5" fill="#475569">獨立於判斷主線，失敗不影響分級</text>
+  <text x="1040" y="932" font-size="10.5" fill="#94A3B8">供應商與模型以環境變數切換</text>
+</svg>

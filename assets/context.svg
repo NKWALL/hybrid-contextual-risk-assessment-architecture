@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="800" viewBox="0 0 1500 800" font-family="'Noto Sans TC','PingFang TC','Heiti TC','Microsoft JhengHei',sans-serif">
+  <defs>
+    <marker id="ao" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#D9732B"/>
+    </marker>
+    <marker id="ab" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2563EB"/>
+    </marker>
+    <marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#64748B"/>
+    </marker>
+  </defs>
+
+  <rect width="1500" height="800" fill="#FFFFFF"/>
+
+  <text x="40" y="38" font-size="20" font-weight="700" fill="#1E293B">本架構在系統中的位置</text>
+  <text x="40" y="60" font-size="12.5" fill="#64748B">本倉庫只包含橘色框內的部分。灰色為呼叫端，由團隊其他成員開發，不在本倉庫範圍。</text>
+
+  <!-- ===== caller ===== -->
+  <rect x="40" y="86" width="300" height="358" rx="10" fill="#F1F5F9" stroke="#94A3B8" stroke-width="1.8" stroke-dasharray="7 4"/>
+  <text x="60" y="114" font-size="14.5" font-weight="700" fill="#475569">呼叫端　交友軟體</text>
+  <text x="60" y="135" font-size="11.5" fill="#94A3B8">不在本倉庫範圍</text>
+
+  <rect x="62" y="150" width="256" height="76" rx="6" fill="#FFFFFF" stroke="#CBD5E1"/>
+  <text x="78" y="174" font-size="12.5" font-weight="600" fill="#334155">用戶端</text>
+  <text x="78" y="195" font-size="11.5" fill="#64748B">顯示介入卡片</text>
+  <text x="78" y="213" font-size="11.5" fill="#64748B">封鎖　檢舉　申訴　回饋</text>
+
+  <rect x="62" y="240" width="256" height="76" rx="6" fill="#FFFFFF" stroke="#CBD5E1"/>
+  <text x="78" y="264" font-size="12.5" font-weight="600" fill="#334155">聊天主服務</text>
+  <text x="78" y="285" font-size="11.5" fill="#64748B">訊息收發</text>
+  <text x="78" y="303" font-size="11.5" fill="#64748B">依判斷結果決定是否送出</text>
+
+  <text x="62" y="342" font-size="11" fill="#64748B">POST /api/v1/risk/detect</text>
+  <text x="62" y="364" font-size="11" fill="#94A3B8">另有 feedback／appeal／report／block／</text>
+  <text x="62" y="380" font-size="11" fill="#94A3B8">unblock／state 等端點供雙方操作。</text>
+  <text x="62" y="402" font-size="11" fill="#94A3B8">接取範例見 integration/risk_client.py，</text>
+  <text x="62" y="418" font-size="11" fill="#94A3B8">呼叫失敗一律放行（fail-open）。</text>
+
+  <!-- call arrows -->
+  <path d="M 340 200 L 430 200" stroke="#D9732B" stroke-width="2.4" fill="none" marker-end="url(#ao)"/>
+  <text x="352" y="188" font-size="11.5" font-weight="600" fill="#A8541A">同步呼叫</text>
+  <text x="352" y="170" font-size="11.5" font-weight="600" fill="#A8541A">每則私訊</text>
+
+  <path d="M 430 290 L 340 290" stroke="#D9732B" stroke-width="2.4" fill="none" marker-end="url(#ao)" stroke-dasharray="7 4"/>
+  <text x="352" y="312" font-size="11.5" font-weight="600" fill="#A8541A">風險等級</text>
+  <text x="352" y="330" font-size="11.5" fill="#A8541A">雙方介入指令</text>
+
+  <!-- ===== this repo ===== -->
+  <rect x="430" y="86" width="620" height="620" rx="12" fill="#FFF8F2" stroke="#D9732B" stroke-width="2.8"/>
+  <text x="452" y="116" font-size="16" font-weight="700" fill="#A8541A">混合式情境風險偵測與安全介入機制</text>
+  <text x="452" y="138" font-size="11.5" fill="#8A6246">FastAPI 微服務　本倉庫內容</text>
+
+  <rect x="452" y="154" width="576" height="258" rx="8" fill="#FFFFFF" stroke="#E0A878" stroke-width="1.6"/>
+  <text x="470" y="180" font-size="13.5" font-weight="700" fill="#A8541A">Step 0 至 Step 9　判斷主線</text>
+
+  <text x="470" y="208" font-size="11.5" fill="#475569">Step 0　禁詞與分類器標記（不短路，交由後續判斷）</text>
+  <text x="470" y="232" font-size="11.5" fill="#475569">Step 1　讀回對話脈絡與先前累積狀態</text>
+  <text x="470" y="256" font-size="11.5" fill="#475569">Step 2　行為規則引擎（頻率、連發、字數失衡）</text>
+  <text x="470" y="280" font-size="11.5" fill="#475569">Step 3　語意評分（五維度分數與各維度信心）</text>
+  <text x="470" y="304" font-size="11.5" fill="#475569">Step 4　信心加權融合　Step 5　情境規則層</text>
+  <text x="470" y="328" font-size="11.5" fill="#475569">Step 6　本則風險增量定案　Step 7　狀態累積與雙重衰退</text>
+  <text x="470" y="352" font-size="11.5" fill="#475569">Step 8　五級分級（含單一維度覆寫）</text>
+  <text x="470" y="376" font-size="11.5" fill="#475569">Step 9　產生寄件方與收件方的非對稱介入指令</text>
+  <text x="470" y="400" font-size="11" fill="#94A3B8">各層規則與閾值皆存於知識庫，調整不需改動程式。</text>
+
+  <rect x="452" y="428" width="278" height="110" rx="8" fill="#FFFFFF" stroke="#E0A878" stroke-width="1.6"/>
+  <text x="470" y="454" font-size="13" font-weight="700" fill="#A8541A">Step 0.5　非同步背景判斷</text>
+  <text x="470" y="478" font-size="11.5" fill="#475569">由 Step 0 的標記觸發</text>
+  <text x="470" y="498" font-size="11.5" fill="#475569">在脈絡下重判標記內容</text>
+  <text x="470" y="518" font-size="11.5" fill="#475569">不阻塞主線，結果回流</text>
+
+  <rect x="750" y="428" width="278" height="110" rx="8" fill="#FFFFFF" stroke="#E0A878" stroke-width="1.6"/>
+  <text x="768" y="454" font-size="13" font-weight="700" fill="#A8541A">Guardrail 訊號層（Step 0）</text>
+  <text x="768" y="478" font-size="11.5" fill="#475569">禁詞比對與內容分類器</text>
+  <text x="768" y="498" font-size="11.5" fill="#475569">只標記，不直接攔截</text>
+  <text x="768" y="518" font-size="11.5" fill="#475569">標記觸發 Step 0.5 重判</text>
+
+  <rect x="452" y="554" width="576" height="130" rx="8" fill="#FFFFFF" stroke="#E0A878" stroke-width="1.6"/>
+  <text x="470" y="580" font-size="13" font-weight="700" fill="#A8541A">回饋回流</text>
+  <text x="470" y="604" font-size="11.5" fill="#475569">收件方評價該次介入，背景判斷產出獨立於主線的第二路增量。</text>
+  <text x="470" y="626" font-size="11.5" fill="#475569">兩者聚合後影響後續判斷：不適回報推高對應維度，</text>
+  <text x="470" y="648" font-size="11.5" fill="#475569">一致的安心回報則加速衰退。</text>
+  <text x="470" y="672" font-size="11" fill="#94A3B8">判斷不是一次性的，收件方的感受會改變系統之後的行為。</text>
+
+  <!-- ===== dependencies ===== -->
+  <rect x="1140" y="86" width="320" height="196" rx="10" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.8"/>
+  <text x="1160" y="114" font-size="14" font-weight="700" fill="#1D4ED8">知識庫</text>
+  <text x="1160" y="140" font-size="11.5" fill="#475569">風險特徵清單　行為規則</text>
+  <text x="1160" y="162" font-size="11.5" fill="#475569">情境規則　閾值與權重設定</text>
+  <text x="1160" y="184" font-size="11.5" fill="#475569">提示詞　介入模板　禁詞</text>
+  <text x="1160" y="214" font-size="11" fill="#64748B">本機開發版　MySQL</text>
+  <text x="1160" y="234" font-size="11" fill="#64748B">部署版　Appwrite</text>
+  <text x="1160" y="258" font-size="11" fill="#94A3B8">結構見 db/dating_safety.sql</text>
+
+  <rect x="1140" y="306" width="320" height="150" rx="10" fill="#F1F5F9" stroke="#64748B" stroke-width="1.8"/>
+  <text x="1160" y="334" font-size="14" font-weight="700" fill="#334155">語言模型</text>
+  <text x="1160" y="360" font-size="11.5" fill="#475569">語意層　五維度評分與信心</text>
+  <text x="1160" y="382" font-size="11.5" fill="#475569">摘要層　滾動對話摘要</text>
+  <text x="1160" y="404" font-size="11.5" fill="#475569">分類層　內容安全分類</text>
+  <text x="1160" y="432" font-size="11" fill="#94A3B8">三層各自獨立設定供應商與模型，</text>
+  <text x="1160" y="448" font-size="11" fill="#94A3B8">以環境變數切換。</text>
+
+  <rect x="1140" y="480" width="320" height="150" rx="10" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.8"/>
+  <text x="1160" y="508" font-size="14" font-weight="700" fill="#1D4ED8">判斷與介入紀錄</text>
+  <text x="1160" y="534" font-size="11.5" fill="#475569">每則訊息的五維度分數</text>
+  <text x="1160" y="556" font-size="11.5" fill="#475569">命中規則與判斷理由</text>
+  <text x="1160" y="578" font-size="11.5" fill="#475569">介入顯示與收件方回饋</text>
+  <text x="1160" y="606" font-size="11" fill="#94A3B8">Appwrite，以背景任務寫入，</text>
+  <text x="1160" y="622" font-size="11" fill="#94A3B8">不阻塞回應。</text>
+
+  <path d="M 1050 184 L 1140 184" stroke="#2563EB" stroke-width="2" fill="none" marker-end="url(#ab)" stroke-dasharray="6 4"/>
+  <text x="1062" y="172" font-size="11" fill="#1D4ED8">讀</text>
+
+  <path d="M 1050 380 L 1140 380" stroke="#64748B" stroke-width="2" fill="none" marker-end="url(#ag)"/>
+  <text x="1062" y="368" font-size="11" fill="#475569">呼叫</text>
+
+  <path d="M 1050 554 L 1140 554" stroke="#2563EB" stroke-width="2" fill="none" marker-end="url(#ab)" stroke-dasharray="6 4"/>
+  <text x="1062" y="542" font-size="11" fill="#1D4ED8">寫</text>
+
+  <text x="430" y="740" font-size="11.5" fill="#64748B">本圖為外層脈絡。判斷主線各階段的資料流與分支見 assets/architecture.svg。</text>
+  <text x="430" y="760" font-size="11.5" fill="#64748B">五個風險維度依作用機制區分：性界線、脅迫、操控、騷擾、情緒壓力。</text>
+</svg>
